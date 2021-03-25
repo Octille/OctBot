@@ -37,7 +37,7 @@ return message.channel.send(Miscembed)
 });
 }
 if(args[0] == `fun`){
-    fs.readdir(path.join(__dirname, '..', `Fun`), (err1, files1, dir) => {
+    fs.readdir(path.join(__dirname, '..', `fun`), (err1, files1, dir) => {
         const cmd = files1.map(file => `\`${file}\``)
     const Funembed = new Discord.MessageEmbed()
     .setTitle(`😄Fun commands`)
@@ -50,7 +50,7 @@ if(args[0] == `fun`){
     });
     }
     if(args[0] == `economy`){
-        fs.readdir(path.join(__dirname, '..', `Economy`), (err1, files1, dir) => {
+        fs.readdir(path.join(__dirname, '..', `economy`), (err1, files1, dir) => {
             const cmd = files1.map(file => `\`${file}\``)
         const ecoembed = new Discord.MessageEmbed()
         .setTitle(`💰Economy commands`)
@@ -63,7 +63,7 @@ if(args[0] == `fun`){
         });
         }
         if(args[0] == `minecraft`){
-            fs.readdir(path.join(__dirname, '..', `Minecraft`), (err1, files1, dir) => {
+            fs.readdir(path.join(__dirname, '..', `minecraft`), (err1, files1, dir) => {
                 const cmd = files1.map(file => `\`${file}\``)
             const minembed = new Discord.MessageEmbed()
             .setTitle(`<:Minecraft:823941357872873472>Minecraft commands`)
@@ -76,7 +76,7 @@ if(args[0] == `fun`){
             });
             }
             if(args[0] == `moderation`){
-                fs.readdir(path.join(__dirname, '..', `Moderation`), (err1, files1, dir) => {
+                fs.readdir(path.join(__dirname, '..', `moderation`), (err1, files1, dir) => {
                     const cmd = files1.map(file => `\`${file}\``)
                 const modembed = new Discord.MessageEmbed()
                 .setTitle(`🔧Moderation commands`)
@@ -89,7 +89,7 @@ if(args[0] == `fun`){
                 });
                 }
                 if(args[0] == `music`){
-                    fs.readdir(path.join(__dirname, '..', `Music`), (err1, files1, dir) => {
+                    fs.readdir(path.join(__dirname, '..', `music`), (err1, files1, dir) => {
                         const cmd = files1.map(file => `\`${file}\``)
                     const musicembed = new Discord.MessageEmbed()
                     .setTitle(`🎶Music commands`)
@@ -102,7 +102,7 @@ if(args[0] == `fun`){
                     });
                     }
                     if(args[0] == `Misc`){
-                        fs.readdir(path.join(__dirname, '..', `Misc`), (err1, files1, dir) => {
+                        fs.readdir(path.join(__dirname, '..', `misc`), (err1, files1, dir) => {
                             const cmd = files1.map(file => `\`${file}\``)
                         const Miscembed = new Discord.MessageEmbed()
                         .setTitle(`💡Misc commands`)
@@ -115,7 +115,7 @@ if(args[0] == `fun`){
                         });
                         }
                         if(args[0] == `Fun`){
-                            fs.readdir(path.join(__dirname, '..', `Fun`), (err1, files1, dir) => {
+                            fs.readdir(path.join(__dirname, '..', `fun`), (err1, files1, dir) => {
                                 const cmd = files1.map(file => `\`${file}\``)
                             const Funembed = new Discord.MessageEmbed()
                             .setTitle(`😄Fun commands`)
@@ -128,7 +128,7 @@ if(args[0] == `fun`){
                             });
                             }
                             if(args[0] == `Economy`){
-                                fs.readdir(path.join(__dirname, '..', `Economy`), (err1, files1, dir) => {
+                                fs.readdir(path.join(__dirname, '..', `economy`), (err1, files1, dir) => {
                                     const cmd = files1.map(file => `\`${file}\``)
                                 const ecoembed = new Discord.MessageEmbed()
                                 .setTitle(`💰Economy commands`)
@@ -141,7 +141,7 @@ if(args[0] == `fun`){
                                 });
                                 }
                                 if(args[0] == `Minecraft`){
-                                    fs.readdir(path.join(__dirname, '..', `Minecraft`), (err1, files1, dir) => {
+                                    fs.readdir(path.join(__dirname, '..', `minecraft`), (err1, files1, dir) => {
                                         const cmd = files1.map(file => `\`${file}\``)
                                     const minembed = new Discord.MessageEmbed()
                                     .setTitle(`<:Minecraft:823941357872873472>Minecraft commands`)
@@ -154,7 +154,7 @@ if(args[0] == `fun`){
                                     });
                                     }
                                     if(args[0] == `Moderation`){
-                                        fs.readdir(path.join(__dirname, '..', `Moderation`), (err1, files1, dir) => {
+                                        fs.readdir(path.join(__dirname, '..', `moderation`), (err1, files1, dir) => {
                                             const cmd = files1.map(file => `\`${file}\``)
                                         const modembed = new Discord.MessageEmbed()
                                         .setTitle(`🔧Moderation commands`)
@@ -167,7 +167,7 @@ if(args[0] == `fun`){
                                         });
                                         }
                                         if(args[0] == `Music`){
-                                            fs.readdir(path.join(__dirname, '..', `Music`), (err1, files1, dir) => {
+                                            fs.readdir(path.join(__dirname, '..', `music`), (err1, files1, dir) => {
                                                 const cmd = files1.map(file => `\`${file}\``)
                                             const musicembed = new Discord.MessageEmbed()
                                             .setTitle(`🎶Music commands`)
