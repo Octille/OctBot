@@ -4,6 +4,7 @@ module.exports = {
     aliases: ["bal", "bl"],
     description: "Check the user balance",
     async execute(message, args, cmd, client, Discord,) {
+      
       try {
       const user = message.mentions.users.first() || message.author;
 
