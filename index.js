@@ -10,16 +10,23 @@ client.distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true
 
 
 
-client.on('ready', () => {
-  console.log(client.guilds.cache.size)
-  client.user.setStatus('available')
-  client.user.setPresence({
-     activity: {
-        name: `games on ${client.guilds.cache.size} servers`,
-        type: 'STREAMING',
-        url: 'https://bit.ly/38OiD4C'
+var used1 = false;
+client.on("ready", () => {
+  console.log("Corion is online.");
+  setInterval(() => {
+    if (used1) {
+      client.user.setActivity("https://octbot.ml/", {
+        type: "PLAYING",
+        status: "ONLINE",
+      });
+      used1 = false;
+    } else {
+      client.user.setActivity(`games on ${client.guilds.cache.size} servers`, {
+        type: "PLAYING",
+      });
+      used1 = true;
     }
-})
+  }, 3000);
 });
 
 
@@ -68,4 +75,4 @@ mongoose.connect(process.env.MONGODB_SRV, {
       `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
   ))
 
-client.login(process.env.token);
+client.login(process.env.octtoken);

@@ -19,6 +19,7 @@ module.exports = {
             .addField(`🔧Moderation`, `\`${settings.prefix}help moderation\``, true)
             .addField(`💡Misc`, `\`${settings.prefix}help misc\``, true)
             .addField(`🎶Music`, `\`${settings.prefix}help music\``, true)
+            .setDescription(`[Invite Me](https://discord.com/api/oauth2/authorize?client_id=741776473613926490&permissions=4294967287&scope=bot) • [Support Server](https://discord.gg/hE28auh4R5) • [top.gg](https://top.gg/bot/432610292342587392/invite/) • [Website](https://octbot.ml/home/)`)
             .setColor("BLUE")
             return message.channel.send(noargsembed)
        

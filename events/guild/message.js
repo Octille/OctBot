@@ -42,7 +42,7 @@ if (message.content.includes('discord.gg/'||'discordapp.com/invite/')){
     message.channel.send(`${user} Invite links are not allowed on this server`)
   }}
 
-  if (message.mentions.has("whatsmysettings")) {
+  if (message.mentions.has(client.user.id)) {
     let welcome = settings.WelcomeCID
     let invitelinks = 'off'
     if(settings.InviteLinks == '1'){
