@@ -7,12 +7,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const DisTube = require('distube')
 client.distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true });
-const DBL = require('dblapi.js')
-const dbl = new DBL(config.DBL_TOKEN, { webhookPort: 5000, webhookAuth: config.AUTH_PASS });
-dbl.webhook.on('vote', vote => {
-  console.log(`User with ID ${vote.user} just voted!`);
-});
-
 var used1 = false;
 client.on("ready", () => {
 
