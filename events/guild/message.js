@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 
 
 module.exports = async(Discord, client, message) => {
-  const Hypixel = require('hypixel-api-reborn');
-  const hypixel = new Hypixel.Client('62147f71-6ab5-4fc9-9334-39ba3f659612');
+  //const Hypixel = require('hypixel-api-reborn');
+  //const hypixel = new Hypixel.Client('62147f71-6ab5-4fc9-9334-39ba3f659612');
 
   if (message.author.bot) return;
   const user = message.author;
@@ -200,7 +200,7 @@ try{
         return message.reply('sorry but commands are disabled on this channel please go to <#829014101467594823> or a diffrent channel on this server')
       } 
       else{
-      command.execute(message, args, cmd, client, Discord, profileData, settings, hypixel);
+      command.execute(message, args, cmd, client, Discord, profileData, settings);
       }
     }
 
