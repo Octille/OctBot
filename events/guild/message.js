@@ -3,11 +3,11 @@ const profileModel = require("../../models/profileSchema");
 const cooldowns = new Map();
 const Guild = require('../../models/guild');
 const mongoose = require('mongoose');
-const Hypixel = require('hypixel-api-reborn');
-const hypixel = new Hypixel.Client('43bd6d1a-3305-4eae-9e3b-fe47222fe338');
+
 
 module.exports = async(Discord, client, message) => {
- 
+  const Hypixel = require('hypixel-api-reborn');
+  const hypixel = new Hypixel.Client('43bd6d1a-3305-4eae-9e3b-fe47222fe338');
 
   if (message.author.bot) return;
   const user = message.author;
