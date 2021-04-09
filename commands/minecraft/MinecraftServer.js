@@ -10,7 +10,6 @@ module.exports = {
         if(!args[1]) return message.channel.send('Please enter a minecraft server port');
  
         util.status(args[0], {port: parseInt(args[1])}).then((response) =>{
-            console.log(response);
             const embed = new Discord.MessageEmbed()
             .setColor('#BFCDEB')
             .setTitle('Mc server status')
@@ -23,6 +22,7 @@ module.exports = {
             
  
             message.channel.send(embed);
+
         })
         .catch ((error) =>{
             message.channel.send('there was an error finding this server');

@@ -23,9 +23,7 @@ const profileSchema = new mongoose.Schema({
   },
   cooldowns: 
   {
-    Beg: { Date, },
-    Mine: { Date,},
-    Hourly: { Date },
+
   }
 
  

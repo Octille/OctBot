@@ -202,7 +202,6 @@ module.exports = {
                 if(isNullOrUndefined(a2)) {
                     a2 = 'EMPTY';
                 }
-                console.log(a2.replace(/§/g, '').replace(/d/, ''));
                 a1 += `${length}. ${a2.replace(/§/g, '').replace(/d/, '').replace(/9/, '').replace(/6/, '').replace(/a/, '').replace(/2/, '').replace(/e/, '').replace(/c/, '').replace(/f/, '').replace(/5/, '')} x${profileData.members[responseMojang.id].inventory[length].count}\n`;
             }
             msg.edit(a1);

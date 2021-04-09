@@ -13,6 +13,7 @@ module.exports = {
         const dFetch = await fetch(`https://api.slothpixel.me/api/players/${args[0]}`);
         const data = await dFetch.json();
 
+
         if(data.error && data.error == 'Player does not exist') return message.reply('That player does not exist.');
 
         const bedwars = data['stats']['BedWars'];
@@ -21,7 +22,6 @@ module.exports = {
         const doubles = gamemodes.doubles;
         const threes = gamemodes['3v3v3v3'];
         const fours = gamemodes['4v4v4v4'];
-        console.log(gamemodes);
 
         const overallData = [
             `**Level (Star):** ${bedwars.level}`,

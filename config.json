@@ -1,4 +1,6 @@
 {
+	"DBL_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MTc3NjQ3MzYxMzkyNjQ5MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjE3NjQ3NTEwfQ.x80_MtabwYpjf5egoAaIxs41pDDm-l0WXoazxdpM2dA",
 	"default_prefix": "!",
-	"mongopath": "mongodb://localhost:27017"
+	"mongopath": "mongodb://localhost:27017",
+	"AUTH_PASS": "ok123123"
 }
