@@ -11,7 +11,6 @@ module.exports = {
         const data = await dFetch.json();
 
 
-
         if (data.error && data.error == 'Player does not exist') return message.reply('That player does not exist.');
 
         const uhc = data.stats['UHC'];

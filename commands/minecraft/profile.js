@@ -25,9 +25,9 @@ try{
         const mcskin = await fetch(`https://sessionserver.mojang.com/session/minecraft/profile/${data.uuid}`)
         const mcdata = await mcskin.json();
         const data1 = await dFetch1.json();
-        const guild = await fetch(`https://api.hypixel.net/findGuild?key=43bd6d1a-3305-4eae-9e3b-fe47222fe338&byUuid=${data.uuid}`)
+        const guild = await fetch(`https://api.hypixel.net/findGuild?key=62147f71-6ab5-4fc9-9334-39ba3f659612&byUuid=${data.uuid}`)
         const guilddata = await guild.json();
-        const guilddataid = await fetch(`https://api.hypixel.net/guild?key=43bd6d1a-3305-4eae-9e3b-fe47222fe338&id=${guilddata.guild}`)
+        const guilddataid = await fetch(`https://api.hypixel.net/guild?key=62147f71-6ab5-4fc9-9334-39ba3f659612&id=${guilddata.guild}`)
         const guildstat = await guilddataid.json();
 
         if (data.error && data.error == 'Player does not exist') return message.reply('That player does not exist.');

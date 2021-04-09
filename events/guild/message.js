@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 module.exports = async(Discord, client, message) => {
   const Hypixel = require('hypixel-api-reborn');
-  const hypixel = new Hypixel.Client('43bd6d1a-3305-4eae-9e3b-fe47222fe338');
+  const hypixel = new Hypixel.Client('62147f71-6ab5-4fc9-9334-39ba3f659612');
 
   if (message.author.bot) return;
   const user = message.author;
