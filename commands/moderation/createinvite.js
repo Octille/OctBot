@@ -1,11 +1,11 @@
 const profileModel = require("../../models/profileSchema");
 module.exports = {
-    name: 'test',
+    name: 'createinvite',
     description: '',
-    aliases: ["T"],
+    aliases: ["ci"],
     async execute(message, args, cmd, client, Discord, profileData) {
       message.guild.channels.cache.get(message.channel.id).createInvite().then(invite =>
-        message.channel.send(invite.url)
+        message.channel.send(`invite url for this channel: ` + invite.url)
     );
     }
 }

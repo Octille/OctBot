@@ -6,15 +6,24 @@ const mongoose = require('mongoose');
 
 
 module.exports = async(Discord, client, message) => {
-  //const Hypixel = require('hypixel-api-reborn');
-  //const hypixel = new Hypixel.Client('62147f71-6ab5-4fc9-9334-39ba3f659612');
+  if(message.channel.id == '820435226227638302'){    
+    if(message.content !== `!ticket`){
+      if(message.author.id !== client.user.id){
+        return message.delete()
+      }
+    }
+    if(message.author.id !== client.user.id){
+      message.delete()
+    }
+
+  }
+  const Hypixel = require('hypixel-api-reborn');
+  const hypixel = new Hypixel.Client('62147f71-6ab5-4fc9-9334-39ba3f659612');
 
   if (message.author.bot) return;
   const user = message.author;
 
-if(message.channel.id == '820435226227638302'){
-  message.delete()
-}
+
 
 
   const settings = await Guild.findOne({
@@ -200,7 +209,7 @@ try{
         return message.reply('sorry but commands are disabled on this channel please go to <#829014101467594823> or a diffrent channel on this server')
       } 
       else{
-      command.execute(message, args, cmd, client, Discord, profileData, settings);
+      command.execute(message, args, cmd, client, Discord, profileData, settings, hypixel);
       }
     }
 

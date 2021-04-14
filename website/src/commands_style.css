@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-height: 1080px;
+  height: 1080px;
+  width: 100%;
+  background-image: url(../images/commands_Backround.png);
+  background-position: auto;
+  background-size: cover;
+  padding: 3%;
+  padding-right: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+.navbar {
+  position: relative;
+  margin-top: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+nav {
+  flex: 1;
+  padding-left: 60px;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0px 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffff;
+}
+
+.commands {
+  color: #ffff;
+}
+.Support {
+  color: #b8b8b8;
+}
+.commands:hover {
+  color: #ffff;
+  animation: ease-in-out;
+}
+.Support:hover {
+  color: #ffff;
+}

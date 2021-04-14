@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  min-height: 500px;
+  height: 350vh;
+  width: 100%;
+  background-image: url(../images/Backround.png);
+  background-position: auto;
+  background-size: cover;
+  padding: 3%;
+  padding-right: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+.navbar {
+  position: relative;
+  margin-top: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+nav {
+  flex: 1;
+  padding-left: 60px;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0px 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffff;
+}
+
+.invsa table td input {
+  color: #c02537 !important;
+}
+
+.invite {
+  width: 9%;
+  height: 6%;
+  position: absolute;
+  top: 25px;
+  bottom: 15px;
+  left: 1600px;
+  padding: 0%;
+}
+.invite:hover {
+  content: url(../images/discord_invite_button_unselected.png);
+  width: 10%;
+  height: 7%;
+  position: absolute;
+  top: 20px;
+  bottom: 10px;
+  left: 1590px;
+}
+
+.commands {
+  color: #b8b8b8;
+}
+.Support {
+  color: #b8b8b8;
+}
+
+.Support:hover {
+  color: #ffff;
+}
+.commands:hover {
+  color: #ffff;
+}
+
+.InfoMusic {
+  width: 45%;
+  height: 30%;
+  position: absolute;
+  top: 1250px;
+  bottom: 50px;
+  left: 850px;
+  padding: 0%;
+  box-shadow: 5px 5px 3px;
+}
+html {
+  scroll-behavior: smooth;
+}
+.octbot {
+  animation-name: t1animation;
+  animation-duration: 1.5s;
+  animation-delay: 0s;
+  width: 45%;
+  height: 30%;
+  position: absolute;
+  top: 250px;
+  bottom: 50px;
+  left: 875px;
+  padding: 0%;
+  color: #616cb6;
+}
+.InfoMusic {
+  border-radius: 30px;
+}
+
+.octbotp1 {
+  animation-name: p1animation;
+  animation-duration: 1.5s;
+  animation-delay: 0s;
+  text-align: center;
+  width: 45%;
+  height: 40%;
+  position: absolute;
+  top: 300px;
+  bottom: 50px;
+  left: 500px;
+  padding: 0%;
+  color: #3f4049;
+  font-size: 200%;
+}
+.MoreInfo {
+  animation-name: moreinfo;
+  animation-duration: 1.5s;
+  animation-delay: 0s;
+  width: 10%;
+  height: 7%;
+  position: absolute;
+  top: 500px;
+  bottom: 15px;
+  left: 845px;
+  padding: 0%;
+}
+.MoreInfo:hover {
+  width: 10%;
+  height: 7%;
+  position: absolute;
+  top: 495px;
+  bottom: 15px;
+  left: 845px;
+  padding: 0%;
+}
+@keyframes p1animation {
+  0% {
+    left: 0px;
+    top: 300px;
+    bottom: 50px;
+  }
+}
+@keyframes t1animation {
+  0% {
+    left: 0px;
+    top: 250;
+    bottom: 50px;
+  }
+}
+@keyframes moreinfo {
+  0% {
+    left: 0px;
+    top: 500px;
+    bottom: 15px;
+  }
+}
+.octboth1 {
+  position: absolute;
+  top: 1350px;
+  bottom: 50px;
+  left: 80px;
+  padding: 0%;
+  color: aliceblue;
+}
+.octbotp2 {
+  width: 35%;
+  height: 40%;
+  text-align: center;
+  position: absolute;
+  top: 1400px;
+  bottom: 50px;
+  left: 60px;
+  padding: 0%;
+  color: #ffffffd5;
+}
+.Economy_1 {
+  width: 35%;
+  height: 30%;
+  position: absolute;
+  top: 2000px;
+  bottom: 50px;
+  left: 50px;
+  padding: 0%;
+  box-shadow: 5px 5px 3px;
+  border-radius: 30px;
+}
+.Economy_2 {
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  top: 2200px;
+  bottom: 50px;
+  left: 400px;
+  padding: 0%;
+  box-shadow: 5px 5px 3px;
+  border-radius: 30px;
+}
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+#myBtn:hover {
+  background-image: url(../images/back-to-top-icon.png);
+}
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.up {
+  width: 25px;
+  height: 25px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+.octbotp3 {
+  width: 35%;
+  height: 40%;
+  text-align: center;
+  position: absolute;
+  padding: 0%;
+  color: #ffffffd5;
+  top: 2350px;
+  bottom: 50px;
+  left: 1150px;
+}
+.octboth2 {
+  width: 35%;
+  height: 40%;
+  text-align: center;
+  position: absolute;
+  padding: 0%;
+  color: #ffffffd5;
+  top: 2300px;
+  bottom: 50px;
+  left: 1150px;
+}
+
+.fade-in {
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
