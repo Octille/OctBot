@@ -2,10 +2,13 @@
 const profileModel = require("../../models/profileSchema");
 const cooldowns = new Map();
 const Guild = require('../../models/guild');
+const counting = require('../../models/Counting');
 const mongoose = require('mongoose');
 
 
 module.exports = async(Discord, client, message) => {
+
+
   if(message.channel.id == '820435226227638302'){    
     if(message.content !== `!ticket`){
       if(message.author.id !== client.user.id){
@@ -15,10 +18,43 @@ module.exports = async(Discord, client, message) => {
     if(message.author.id !== client.user.id){
       message.delete()
     }
-
+  }
+  if (message.author.bot) return;
+  if(message.channel.id == '832060827866759228'){
+    const countingdata = await counting.findOne({
+      guild: message.guild.id
+  }) 
+    const currentnumber = countingdata.number
+    const number = message.content
+    const numberneeded = +currentnumber + +1
+    if(number !== `${numberneeded}`){
+      try{
+        message.delete()
+        const wrongnumber = new Discord.MessageEmbed()
+        .setTitle(`Wrong number!`)
+        .setDescription(`hint: ${numberneeded}`)
+        .setColor("RANDOM")
+        message.author.send(wrongnumber)
+        return;
+      }catch (err) {
+        return message.delete()
+      }
+      
+    }
+    await counting.findOneAndUpdate(
+      {
+        guild: message.guild.id,
+      },
+      {
+        $set: {
+          "number" : number,
+      },
+    },
+    );
+    return;
   }
 
-  if (message.author.bot) return;
+
   const user = message.author;
 
 
