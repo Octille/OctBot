@@ -6,14 +6,12 @@ module.exports = {
     category: "moderation",
     description: "bans the member",
     async execute(message,args, cmd, client, Discord){
-
-        if (message.deletable) message.delete();
         if (!args[0]) {
             return message.reply("Please provide a person to ban.")
          }
          message.channel.send(`type a reason to ban ${message.mentions.users.first()} below`)
          const filter = (m) => m.author.id === message.author.id
-         const collector = message.channel.createMessageCollector(filter, { max: 2, time: 15000 });
+         const collector = message.channel.createMessageCollector(filter, { max: 1, time: 15000 });
          
          collector.on('collect', async (m) => {
              message.channel.send(`Banning member...`)
@@ -55,8 +53,8 @@ module.exports = {
             .setThumbnail(toBan.user.displayAvatarURL)
             .setFooter(message.member.displayName, message.author.displayAvatarURL)
             .setTimestamp()
-            .setDescription(`**- baned member:** ${toBan} (${toBan.id})
-            **- baned by:** ${message.member} (${message.member.id})
+            .setDescription(`**- baned member:** ${toBan}
+            **- baned by:** ${message.member}
             **- Reason:** ${m.content}`);
 
         const promptEmbed = new discord.MessageEmbed()
@@ -71,15 +69,28 @@ module.exports = {
 
             // Verification stuffs
             if (emoji === "✅") {
+                
+
                 toBan.ban()
                     .catch(err => {
                         if (err) return message.channel.send(`Well.... the ban didn't work out. Here's the error ${err}`)
                     });
+                    try{
+                        const banned = new Discord.MessageEmbed()
+                        .setColor("RED")
+                        .setTitle(`banned`)
+                        .setDescription(`you have been banned from \`${message.guild.name}\`
+                        **- By: **${message.author}
+                        **- reason: **${m.content}`)
+                        toBan.send(banned)
+                    }catch(err){
+                        
+                    }
 
                 message.channel.send(embed);
             } else if (emoji === "❌") {
-                message.delete()
-                message.reply(`ban canceled.`)
+                msg.delete()
+                message.channel.send(`ban canceled.`)
             }
         });
     });

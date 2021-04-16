@@ -36,12 +36,39 @@ module.exports = {
                 return message.reply("You didnt specify a time!");
             }
             member.roles.add(role.id);
+            const muted = new Discord.MessageEmbed()
+            .setColor("GREEN")
+            .setTitle(`Muted`)
+            .setDescription(`**Member muted: **${member.user}
+            **Time: **${ms(ms(time))}
+            **By: **${message.author}`)
 
-            message.channel.send(`@${member.user.tag} has now been muted for ${ms(ms(time))}`)
+
+            const mutedmember = new Discord.MessageEmbed()
+            .setColor("RED")
+            .setTitle(`Muted`)
+            .setDescription(`**Time: **${ms(ms(time))}
+            **By: **${message.author}
+            **Server: **${message.guild.name}`)
+
+
+            const unmuted = new Discord.MessageEmbed()
+            .setColor("GREEN")
+            .setTitle(`unmuted`)
+            .setDescription(`${member.user} has now been unmuted.`)
+
+            const unmutedmember = new Discord.MessageEmbed()
+            .setColor("GREEN")
+            .setTitle(`unmuted`)
+            .setDescription(`you have been unmuted on ${message.guild.name}.`)
+
+            message.channel.send(muted)
+            member.send(mutedmember)
 
             setTimeout( function () {
                 member.roles.remove(role.id);
-                message.channel.send(`@${member.user.tag} has been unmuted.`)
+                message.channel.send(unmuted)
+                member.send(unmutedmember)
             }, ms(time));
 
         } else {
