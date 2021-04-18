@@ -19,8 +19,8 @@ module.exports = async (client, discord, member) => {
 		const profileData = await profileModel.findOne({ userID: member.id, });
 		if (!profileData) {
 		  const profile = await profileModel.create({
-			userID: message.author.id,
-			serverID: message.guild.id,
+			userID: member.author.id,
+			serverID: member.guild.id,
 			coins: 1000,
 			bank: 0,
 			Company: {
