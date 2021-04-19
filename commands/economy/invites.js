@@ -12,10 +12,14 @@ module.exports = {
             invites.forEach((invite) => {
                 const { uses, inviter } = invite
                 const { username, discriminator } = inviter
+                
 
                 const name = `${username}#${discriminator}`
+               
 
                 inviteCounter[name] = (inviteCounter[name] || 0) + uses
+                
+                
     
             })
             let replyText = `invites:`
@@ -23,9 +27,10 @@ module.exports = {
             const sortedInvites = Object.keys(inviteCounter).sort(
                 (a, b) => inviteCounter[b] - inviteCounter[a]
               )
-                sortedInvites.length = 3
             
+                sortedInvites.length = 3
             for (const invite of sortedInvites) {
+                
                 const count = inviteCounter[invite]
                 replyText += `\n${invite} has invited ${count} member(s)!`     
             }
