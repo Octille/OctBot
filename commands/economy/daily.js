@@ -15,7 +15,7 @@ module.exports = {
                 },
               }
             );
-            return message.channel.send(`**₪ ${daily.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** were placed in your wallet`)
+            return message.lineReply(`**₪ ${daily.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** were placed in your wallet`)
 
     }
 }

@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "github:discordjs/opus",
+    "@top-gg/sdk": "^3.1.1",
     "ascii-table": "0.0.9",
     "canvas": "^2.6.1",
     "commando-provider-mongo": "^2.0.2",
@@ -20,6 +21,7 @@
     "dblapi.js": "^2.4.1",
     "discord-embed-maker": "^3.0.8",
     "discord-prefix": "^2.0.0",
+    "discord-reply": "^0.1.2",
     "discord-xp": "^1.1.7",
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.10.0",

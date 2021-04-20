@@ -9,21 +9,21 @@ module.exports = {
         const mentioned = message.mentions.users.first();
         const coins = profileData.coins
         if(!mentioned){
-            return message.channel.send('please provide a person you want to transfer money to, do remember decimals numbers will be rounded')
+            return message.lineReply('please provide a person you want to transfer money to, do remember decimals numbers will be rounded')
         }
         let amount = args[1]
         amount = (amount*1).toFixed();
         if(!args[1]) {
-            return message.channel.send('please provide a amount to transfer')
+            return message.lineReply('please provide a amount to transfer')
         }
         if(isNaN(amount)){
-            return message.channel.send('please provide valid amount')
+            return message.lineReply('please provide valid amount')
         }
         if(!args[1] < 0) {
-          return message.channel.send('You canot send a negative amount')
+          return message.lineReply('You canot send a negative amount')
       }
         if(amount > profileData.coins){
-            return message.channel.send(`${user} you can\'t share to ${mentioned} you only have **₪ ${coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** in your wallet`);
+            return message.lineReply(` you can\'t share to ${mentioned} you only have **₪ ${coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** in your wallet`);
         }
         await profileModel.findOneAndUpdate(
             {

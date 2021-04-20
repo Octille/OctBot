@@ -103,6 +103,7 @@ if (message.content.includes('discord.gg/'||'discordapp.com/invite/')){
     return message.channel.send(embed);
 };
 
+
 try{
     let prefix = settings.prefix;
    
@@ -137,11 +138,12 @@ try{
         
       });
       profile.save();
-      message.channel.send(`oh no! ${user} looks like you wernt in my database but dont worry i have added you now you can use my commands.`)
+      message.lineReply(`oh no! looks like you wernt in my database but dont worry i have added you now you can use my commands.`)
     }
   } catch (err) {
 
   }
+
   if(profileData.coins < 0){
     message.channel.send('looks like you lost all your coins and has a stroke, you paid the hostpital half your bank')
     const bank = profileData.bank
@@ -175,7 +177,42 @@ try{
   }
 
 
+  const Topgg = require('@top-gg/sdk')
+  const api = new Topgg.Api('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MTc3NjQ3MzYxMzkyNjQ5MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjE3NjQ3NTEwfQ.x80_MtabwYpjf5egoAaIxs41pDDm-l0WXoazxdpM2dA')
+  const NotClaimed = 'NotClaimed'
+  const Claimed = 'Claimed'
 
+  let voted = api.hasVoted(message.author.id)
+  if(voted){
+    if(profileData.topggrewards !== Claimed){
+      await profileData.updateOne(
+        {
+          $inc :{
+            coins: 10000000,
+          },
+        }
+      );
+    await profileData.updateOne(
+      {
+        $set :{
+          topggrewards: 'Claimed',
+        },
+      }
+    );
+    }
+  }
+
+       
+  if(voted) {
+    await profileData.updateOne(
+      {
+        $set :{
+          topggrewards: 'NotClaimed',
+        },
+      }
+    );
+
+  }
   
     
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -230,7 +267,6 @@ try{
     
 
   } catch (err) {
-    console.error(err)
     return message.channel.send('command not found please refer to \`!help\`')}
  
 

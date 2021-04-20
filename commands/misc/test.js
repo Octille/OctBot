@@ -1,9 +1,17 @@
+const profileModel = require("../../models/profileSchema");
 module.exports = {
     name: 'test',
     async execute(message,args, cmd, client, Discord) {
-      
-        const k = Math.floor(Math.random() * 5000) + 20000   
-        console.log(`${k}`)
-        message.channel.send(`${k}`)
+        await profileModel.findOneAndUpdate(
+            {
+              userID: message.author.id,
+            },
+            {
+              $set : {
+                topggrewards: "NotClaimed",
+              },
+            }
+          );
+          message.channel.send(`dk`)
     }
 }

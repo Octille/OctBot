@@ -13,7 +13,7 @@ module.exports = {
             const all = profileData.bank
             const allbalance = all+coins
             if(all < 1){
-                return message.channel.send('you can\'t withdraw any coins you have 0 in your bank')
+                return message.lineReply('you can\'t withdraw any coins you have 0 in your bank')
             }
             await profileModel.findOneAndUpdate(
                 {
@@ -26,15 +26,15 @@ module.exports = {
                     },
                   }
                 );
-                return message.channel.send(`Succesfully withdrew **₪ ${profileData.bank.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**, your balance is now **₪ ${allbalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**`)
+                return message.lineReply(`Succesfully withdrew **₪ ${profileData.bank.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**, your balance is now **₪ ${allbalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**`)
         }
         
         if (isNaN(amount)) {
-            return message.channel.send('please provide a valid amount')
+            return message.lineReply('please provide a valid amount')
              }
-             if (amount % 1 != 0 || amount <= 0) return message.channel.send("Withdrawn amount must be a whole number");
+             if (amount % 1 != 0 || amount <= 0) return message.lineReply("Withdrawn amount must be a whole number");
              if(amount> profileData.bank){
-                return message.channel.send('You dont have that many coins in your bank!');
+                return message.lineReply('You dont have that many coins in your bank!');
             }
             
              await profileModel.findOneAndUpdate(
@@ -49,7 +49,7 @@ module.exports = {
                   }
                 );
                 const bankamount = bank-amount
-                return message.channel.send(`Succesfully withdrew **₪${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**, your bank now has **₪${bankamount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** coins`)
+                return message.lineReply(`Succesfully withdrew **₪${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**, your bank now has **₪${bankamount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** coins`)
 
 
     }

@@ -15,7 +15,7 @@ module.exports = {
         if(args[0] == "all"){
             const all = profileData.coins
             if(all < 1){
-                return message.channel.send('you cant deposit any coins your wallet is 0 ')
+                return message.lineReply('you cant deposit any coins your wallet is 0 ')
             }
             await profileModel.findOneAndUpdate(
                 {
@@ -28,14 +28,14 @@ module.exports = {
                     },
                   }
                 );
-                return message.channel.send(`Succesfully deposit **₪ ${all.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** to your bank, you now have **₪ ${alltotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** in your bank`)
+                return message.lineReply(`Succesfully deposit **₪ ${all.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** to your bank, you now have **₪ ${alltotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** in your bank`)
         }
         if (isNaN(amount)) {
-            return message.channel.send('please provide a valid amount')
+            return message.lineReply('please provide a valid amount')
              }
-             if (amount % 1 != 0 || amount <= 0) return message.channel.send("deposit amount must be a whole number");
+             if (amount % 1 != 0 || amount <= 0) return message.lineReply("deposit amount must be a whole number");
              if(amount> profileData.coins){
-                return message.channel.send('You dont have that many coins in your wallet!');
+                return message.lineReply('You dont have that many coins in your wallet!');
             }
              await profileModel.findOneAndUpdate(
                 {
@@ -48,7 +48,7 @@ module.exports = {
                     },
                   }
                 );
-                return message.channel.send(`Succesfully deposit **₪ ${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** to your bank`)
+                return message.lineReply(`Succesfully deposit **₪ ${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** to your bank`)
 
 
     }
