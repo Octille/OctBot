@@ -203,7 +203,7 @@ try{
   }
 
        
-  if(voted) {
+  if(!voted) {
     await profileData.updateOne(
       {
         $set :{
