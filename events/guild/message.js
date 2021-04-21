@@ -199,10 +199,17 @@ try{
         },
       }
     );
+    const rewardsclaimed = new Discord.MessageEmbed()
+    .setTitle('Thank you for voting!')
+    .setColor("GREEN")
+    .setDescription('As a reward you get\n-**₪ 500,000**')
+try{
+  message.author.send(rewardsclaimed)
+}catch (err) {
 
-    message.channel.send(`Voting reward claimed!`)
+}
     const channel = await client.channels.cache.get(`834454460667265064`)
-		await channel.send(`${message.author} has voted on top.gg and claimed their 10m coins`);
+		await channel.send(`${message.author} has voted on top.gg and claimed their 500k coins`);
     }
     
   }
