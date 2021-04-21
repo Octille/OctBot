@@ -19,8 +19,8 @@ module.exports = {
         minercost = 1000000;
       } else if (miners_owned < 10){
         minercost = 1250000;
-      } else {
-        minercost = 1500000;
+      } else if (miners_owned > 10){
+        minercost = miners_owned * 75000 + 1000000
       }
       const totalworkers = menstionedData.Company.workers
       const workers_owned = profileData.Company.workers;
@@ -65,17 +65,13 @@ module.exports = {
           
           const amountedit = args[2]
           let amount = 1;
-          if(amountedit){
-            amount = args[2];
+          if(amountedit > 1){
+            return message.channel.send(`You can only buy one miner at a time!`)
           }
-          const minerscosts = minercost * amount
-          if(isNaN(amount)){
-              return message.channel.send('please provide valid amount')
-          }
-          if(minerscosts > profileData.coins){
+          if(minercost > profileData.coins){
               return message.channel.send('You dont have enough to buy that');
           }
-          const mineramount = minercost * amount
+          mineramount = minercost
           
 
           await profileModel.findOneAndUpdate(
@@ -84,7 +80,7 @@ module.exports = {
               },
               {
                 $inc:{
-                  coins: -minerscosts,
+                  coins: -minercost,
                   "Company.miners": amount,
                 },
               }

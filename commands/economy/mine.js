@@ -6,7 +6,7 @@ module.exports = {
     async execute(message, args, cmd, client, Discord, profileData) {
       
         if(!profileData.Company.miners) return message.channel.send('looks like you dont have a miner go to the shop and buy one!')
-      const k = Math.floor(Math.random() * 5000) + 20000   
+      const k = Math.floor(Math.random() * 5000) + 10000   
         const recieved = profileData.Company.miners * k
         await profileModel.findOneAndUpdate(
             {

@@ -182,7 +182,7 @@ try{
   const NotClaimed = 'NotClaimed'
   const Claimed = 'Claimed'
 
-  let voted = api.hasVoted(message.author.id)
+  let voted = await api.hasVoted(message.author.id)
   if(voted){
     if(profileData.topggrewards !== Claimed){
       await profileData.updateOne(
@@ -199,7 +199,9 @@ try{
         },
       }
     );
+    message.channel.send(`Voting reward claimed!`)
     }
+    
   }
 
        
