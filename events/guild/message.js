@@ -199,7 +199,10 @@ try{
         },
       }
     );
+
     message.channel.send(`Voting reward claimed!`)
+    const channel = await client.channels.cache.get(`834454460667265064`)
+		await channel.send(`${message.author} has voted on top.gg and claimed there 10m coins`);
     }
     
   }
