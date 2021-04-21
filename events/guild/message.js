@@ -188,7 +188,7 @@ try{
       await profileData.updateOne(
         {
           $inc :{
-            coins: 10000000,
+            coins: 500000,
           },
         }
       );
