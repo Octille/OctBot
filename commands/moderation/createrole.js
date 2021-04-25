@@ -24,15 +24,15 @@
           if(rolename == '0'){
             rolename = m.content
               return message.channel.send(`Your role name has been set to \`${m.content}\`, now react with the colour you want the role to be.`).then(async (msg)=> {
-                await msg.react(`⚫`)
-                await msg.react(`🔴`)
-                await msg.react(`🟠`)
-                await msg.react(`🟡`)
-                await msg.react(`🟢`)
-                await msg.react(`🔵`)
-                await msg.react(`🟣`)
-                await msg.react(`🟤`)
-                await msg.react(`⚪`).then(() =>{
+                msg.react(`⚫`)
+                msg.react(`🔴`)
+                msg.react(`🟠`)
+                msg.react(`🟡`)
+                msg.react(`🟢`)
+                msg.react(`🔵`)
+                msg.react(`🟣`)
+                msg.react(`🟤`)
+                msg.react(`⚪`).then(() =>{
 
                    
 

@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const profileSchema = new mongoose.Schema({
   userID: { type: String, require: true, unique: true },
   serverID: { type: String, require: true },
+  xp: { type: Number },
   coins: { type: Number, default: 1000 },
   bank: { type: Number }, 
   topggrewards: { type: String},
+
   Company: 
     {
     miners: { type: Number, require: true  },
@@ -22,10 +24,12 @@ const profileSchema = new mongoose.Schema({
     MythicFish: { type: Number },
   
   },
-  cooldowns: 
-  {
-
-  }
+  commands_cooldowns:[
+    {
+      name: { type: String },
+      time: { type: String },
+    }
+  ]
 
  
 });

@@ -296,3 +296,16 @@ html {
     opacity: 1;
   }
 }
+.status {
+  width: 20%;
+  position: absolute;
+  padding: 0%;
+  top: 250px;
+  bottom: 0px;
+  left: 1450px;
+}
+.navstatus {
+  top: 2350px;
+  bottom: 50px;
+  left: 1150px;
+}

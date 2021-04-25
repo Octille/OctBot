@@ -4,6 +4,8 @@ const cooldowns = new Map();
 const Guild = require('../../models/guild');
 const counting = require('../../models/Counting');
 const mongoose = require('mongoose');
+const ms = require('ms');
+const discord = require('discord.js')
 
 
 module.exports = async(Discord, client, message) => {
@@ -126,10 +128,7 @@ try{
             Shirt: 1,
             Pants: 1,
         },
-        cooldowns: 
-        {
-      id: message.author.id,
-        }
+        commands_cooldowns: []
 
         
     
@@ -231,72 +230,68 @@ try{
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+    if (!command) return message.channel.send('command not found please refer to \`!help\`');
 
-    try {
-        const profile = profileModel.findOneAndUpdate(       
+
+      const COOLDOWN = profileData.commands_cooldowns.find((x) => x.name === command.name)
+      if(COOLDOWN === undefined || !COOLDOWN){
+
+      await profileModel.findOneAndUpdate(
         {
           userID: message.author.id,
         },
         {
-          $set:{
-          cooldowns: { commandname: `${command.name}` }
-          }
-          }
-           
-          )
-
-
-
-      if(!cooldowns.has(command.name)){
-        cooldowns.set(command.name, new Discord.Collection());
-    }
-    
-    const current_time = Date.now();
-    const time_stamps = cooldowns.get(command.name);
-    const cooldown_amount = (command.cooldown) * 1000;
-    if(time_stamps.has(message.author.id)){
-        const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
-
-        if(current_time < expiration_time){
-            var time_left = (expiration_time - current_time) / 1000 ;
-            if(time_left > 60){
-              time_left = time_left / 60
-              if(time_left > 60){
-                time_left = time_left / 60
-                return message.reply(`Please wait \`${time_left.toFixed(1)}\` more hours before using the command ${command.name}`);
-              }
-              return message.reply(`Please wait \`${time_left.toFixed(1)}\` more min before using the command ${command.name}`);
+          $push:{
+            commands_cooldowns: {
+              name: command.name,
+              time: Date.now(),
             }
-
-            
-
-            return message.reply(`Please wait \`${time_left.toFixed(1)}\` more sec before using the command ${command.name}`);
+          }
+   
         }
-    }
-  
-    time_stamps.set(message.author.id, current_time);
-    setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
-    
+      )
+      }else{
+        const command_cooldown = command.cooldown * 1000
+        if(command_cooldown - (Date.now() - COOLDOWN.time) > 0){
+          const TIME = ms(command_cooldown - (Date.now() - COOLDOWN.time))
+          const embedcooldown = new Discord.MessageEmbed()
+          .setTitle(`Woah, slow down`)
+          .setDescription(`The command **${command.name}** is on cooldown for \`${TIME}\``)
+          .setFooter('While you wait you can vote for oct bot on top.gg')
+          .setColor("RANDOM");
+          return message.channel.send(embedcooldown)
+        }
+        await profileModel.findOneAndUpdate(
+          {
+            userID: message.author.id,
+          },
+          {
+            $pull:{
+              commands_cooldowns: {
+                name: command.name,
+              }
+            }
+     
+          }
+        )
+        await profileModel.findOneAndUpdate(
+          {
+            userID: message.author.id,
+          },
+          {
+            $push:{
+              commands_cooldowns: {
+                name: command.name,
+                time: Date.now(),
+              }
+            }
+     
+          }
+        )
 
-  } catch (err) {
-    return message.channel.send('command not found please refer to \`!help\`')}
+      }   
+      if(command) command.execute(message, args, cmd, client, Discord, profileData, settings);
  
-
-
-    if(command) {
-      if(message.channel.id == '685984967914029130'){
-        if(message.member.roles.find(r => r.name === "Mod") || message.member.roles.find(r => rname === "Owner")){
-          command.execute(message, args, cmd, client, Discord, profileData, settings)
-      }
-        return message.reply('sorry but commands are disabled on this channel please go to <#829014101467594823> or a diffrent channel on this server')
-      } 
-      else{
-      command.execute(message, args, cmd, client, Discord, profileData, settings);
-      }
-    }
-
-
-    
   }catch (err) {
     prefix = "!"
   }
