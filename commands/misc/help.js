@@ -32,7 +32,7 @@ if (args[0].toLowerCase() === 'minecraft') title = `<:Minecraft:8239413578728734
 if (args[0].toLowerCase() === 'moderation') title = `🔧Moderation commands`;
 if (args[0].toLowerCase() === 'music') title = `🎶Music commands`;
 if (args[0].toLowerCase() === 'fun') title = `😄Fun commands`;
-if(args[0]){
+if(title){
     fs.readdir(path.join(__dirname, '..', `${args[0].toLowerCase()}`), (err1, files1, dir) => {
         const cmd = files1.map(file => `\`${file}\``)
     const Miscembed = new Discord.MessageEmbed()
@@ -53,16 +53,16 @@ const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.
 if (!command) {
     return 
 }
+if (command.name) data.push(`**Name:** ${command.name}`);
 if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
 if (command.description) data.push(`**Description:** ${command.description}`);
 if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
 data.push(`**Cooldown:** ${command.cooldown || 0} second(s)`);
 const helpembed = new discord.MessageEmbed()
-.setTitle(command.name)
+.setTitle(command.name + ` Info`)
 .setDescription(data)
 .setColor("RANDOM")
 message.channel.send(helpembed);
-console.log(data);
 }
 
 }
