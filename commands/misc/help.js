@@ -25,162 +25,27 @@ module.exports = {
             return message.channel.send(noargsembed)
        
 }
-if(args[0] == `misc`){
-fs.readdir(path.join(__dirname, '..', `misc`), (err1, files1, dir) => {
-    const cmd = files1.map(file => `\`${file}\``)
-const Miscembed = new Discord.MessageEmbed()
-.setTitle(`💡Misc commands`)
-.setDescription(`${cmd.toString()
-.replace(/[{()}]/g, '')
-.replace(/.js/g, '')
-.replace(/,/g, ', ')}`)
-.setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-return message.channel.send(Miscembed)
-});
-}
-if(args[0] == `fun`){
-    fs.readdir(path.join(__dirname, '..', `fun`), (err1, files1, dir) => {
+let title;
+if (args[0].toLowerCase() === 'misc') title = `💡Misc commands`;
+if (args[0].toLowerCase() === 'economy') title = `💰Economy commands`;
+if (args[0].toLowerCase() === 'minecraft') title = `<:Minecraft:823941357872873472>Minecraft commands`;
+if (args[0].toLowerCase() === 'moderation') title = `🔧Moderation commands`;
+if (args[0].toLowerCase() === 'music') title = `🎶Music commands`;
+if (args[0].toLowerCase() === 'fun') title = `😄Fun commands`;
+if(args[0]){
+    fs.readdir(path.join(__dirname, '..', `${args[0].toLowerCase()}`), (err1, files1, dir) => {
         const cmd = files1.map(file => `\`${file}\``)
-    const Funembed = new Discord.MessageEmbed()
-    .setTitle(`😄Fun commands`)
+    const Miscembed = new Discord.MessageEmbed()
+    .setTitle(title)
     .setDescription(`${cmd.toString()
     .replace(/[{()}]/g, '')
     .replace(/.js/g, '')
     .replace(/,/g, ', ')}`)
     .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-    return message.channel.send(Funembed)
+    return message.channel.send(Miscembed)
     });
     }
-    if(args[0] == `economy`){
-        fs.readdir(path.join(__dirname, '..', `economy`), (err1, files1, dir) => {
-            const cmd = files1.map(file => `\`${file}\``)
-        const ecoembed = new Discord.MessageEmbed()
-        .setTitle(`💰Economy commands`)
-        .setDescription(`${cmd.toString()
-        .replace(/[{()}]/g, '')
-        .replace(/.js/g, '')
-        .replace(/,/g, ', ')}`)
-        .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-        return message.channel.send(ecoembed)
-        });
-        }
-        if(args[0] == `minecraft`){
-            fs.readdir(path.join(__dirname, '..', `minecraft`), (err1, files1, dir) => {
-                const cmd = files1.map(file => `\`${file}\``)
-            const minembed = new Discord.MessageEmbed()
-            .setTitle(`<:Minecraft:823941357872873472>Minecraft commands`)
-            .setDescription(`${cmd.toString()
-            .replace(/[{()}]/g, '')
-            .replace(/.js/g, '')
-            .replace(/,/g, ', ')}`)
-            .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-            return message.channel.send(minembed)
-            });
-            }
-            if(args[0] == `moderation`){
-                fs.readdir(path.join(__dirname, '..', `moderation`), (err1, files1, dir) => {
-                    const cmd = files1.map(file => `\`${file}\``)
-                const modembed = new Discord.MessageEmbed()
-                .setTitle(`🔧Moderation commands`)
-                .setDescription(`${cmd.toString()
-                .replace(/[{()}]/g, '')
-                .replace(/.js/g, '')
-                .replace(/,/g, ', ')}`)
-                .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                return message.channel.send(modembed)
-                });
-                }
-                if(args[0] == `music`){
-                    fs.readdir(path.join(__dirname, '..', `music`), (err1, files1, dir) => {
-                        const cmd = files1.map(file => `\`${file}\``)
-                    const musicembed = new Discord.MessageEmbed()
-                    .setTitle(`🎶Music commands`)
-                    .setDescription(`${cmd.toString()
-                    .replace(/[{()}]/g, '')
-                    .replace(/.js/g, '')
-                    .replace(/,/g, ', ')}`)
-                    .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                    return message.channel.send(musicembed)
-                    });
-                    }
-                    if(args[0] == `Misc`){
-                        fs.readdir(path.join(__dirname, '..', `misc`), (err1, files1, dir) => {
-                            const cmd = files1.map(file => `\`${file}\``)
-                        const Miscembed = new Discord.MessageEmbed()
-                        .setTitle(`💡Misc commands`)
-                        .setDescription(`${cmd.toString()
-                        .replace(/[{()}]/g, '')
-                        .replace(/.js/g, '')
-                        .replace(/,/g, ', ')}`)
-                        .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                        return message.channel.send(Miscembed)
-                        });
-                        }
-                        if(args[0] == `Fun`){
-                            fs.readdir(path.join(__dirname, '..', `fun`), (err1, files1, dir) => {
-                                const cmd = files1.map(file => `\`${file}\``)
-                            const Funembed = new Discord.MessageEmbed()
-                            .setTitle(`😄Fun commands`)
-                            .setDescription(`${cmd.toString()
-                            .replace(/[{()}]/g, '')
-                            .replace(/.js/g, '')
-                            .replace(/,/g, ', ')}`)
-                            .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                            return message.channel.send(Funembed)
-                            });
-                            }
-                            if(args[0] == `Economy`){
-                                fs.readdir(path.join(__dirname, '..', `economy`), (err1, files1, dir) => {
-                                    const cmd = files1.map(file => `\`${file}\``)
-                                const ecoembed = new Discord.MessageEmbed()
-                                .setTitle(`💰Economy commands`)
-                                .setDescription(`${cmd.toString()
-                                .replace(/[{()}]/g, '')
-                                .replace(/.js/g, '')
-                                .replace(/,/g, ', ')}`)
-                                .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                                return message.channel.send(ecoembed)
-                                });
-                                }
-                                if(args[0] == `Minecraft`){
-                                    fs.readdir(path.join(__dirname, '..', `minecraft`), (err1, files1, dir) => {
-                                        const cmd = files1.map(file => `\`${file}\``)
-                                    const minembed = new Discord.MessageEmbed()
-                                    .setTitle(`<:Minecraft:823941357872873472>Minecraft commands`)
-                                    .setDescription(`${cmd.toString()
-                                    .replace(/[{()}]/g, '')
-                                    .replace(/.js/g, '')
-                                    .replace(/,/g, ', ')}`)
-                                    .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                                    return message.channel.send(minembed)
-                                    });
-                                    }
-                                    if(args[0] == `Moderation`){
-                                        fs.readdir(path.join(__dirname, '..', `moderation`), (err1, files1, dir) => {
-                                            const cmd = files1.map(file => `\`${file}\``)
-                                        const modembed = new Discord.MessageEmbed()
-                                        .setTitle(`🔧Moderation commands`)
-                                        .setDescription(`${cmd.toString()
-                                        .replace(/[{()}]/g, '')
-                                        .replace(/.js/g, '')
-                                        .replace(/,/g, ', ')}`)
-                                        .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                                        return message.channel.send(modembed)
-                                        });
-                                        }
-                                        if(args[0] == `Music`){
-                                            fs.readdir(path.join(__dirname, '..', `music`), (err1, files1, dir) => {
-                                                const cmd = files1.map(file => `\`${file}\``)
-                                            const musicembed = new Discord.MessageEmbed()
-                                            .setTitle(`🎶Music commands`)
-                                            .setDescription(`${cmd.toString()
-                                            .replace(/[{()}]/g, '')
-                                            .replace(/.js/g, '')
-                                            .replace(/,/g, ', ')}`)
-                                            .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
-                                            return message.channel.send(musicembed)
-                                            });
-                                            }
+
 const data = [];
 const { commands } = message.client;
 const name = args[0].toLowerCase();
@@ -191,7 +56,7 @@ if (!command) {
 if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
 if (command.description) data.push(`**Description:** ${command.description}`);
 if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
-data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
+data.push(`**Cooldown:** ${command.cooldown || 0} second(s)`);
 const helpembed = new discord.MessageEmbed()
 .setTitle(command.name)
 .setDescription(data)

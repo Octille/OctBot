@@ -3,10 +3,19 @@
   padding: 0;
 }
 
+body {
+  height: 1080px;
+  width: 105%;
+  max-width: 1920px;
+  max-height: 1080;
+}
 .container {
   min-height: 1080px;
   height: 1080px;
-  width: 100%;
+  width: 105%;
+  max-width: 1920px;
+  max-height: 1080;
+  margin-left: 8px;
   background-image: url(../images/commands_Backround.png);
   background-position: auto;
   background-size: cover;

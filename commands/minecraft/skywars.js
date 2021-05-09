@@ -3,7 +3,9 @@ const Discord = require('discord.js');
 module.exports = {
     name: 'skywars',
     aliases: ['sw'],
-    async execute(message, args, cmd, client, Discord, profileData, settings, hypixel) {
+    async execute(message, args, cmd, client, Discord, profileData, settings) {
+      const Hypixel = require('hypixel-api-reborn');
+      const hypixel = new Hypixel.Client('c2f3e010-6642-4236-a27e-789aa7e2a503');
         let name = args.join(" ");
         
         hypixel.getPlayer(name).then(async (player) => {
@@ -78,6 +80,7 @@ module.exports = {
           message.channel.send({embed})
       }).catch((err) => {
           message.reply("The player you specified doesn't exist or hasn't joined the hypixel network")
+          console.log(err)
       })
 
     },

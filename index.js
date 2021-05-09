@@ -74,4 +74,4 @@ mongoose.connect(process.env.MONGODB_SRV, {
       `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
   ))
 
-client.login(process.env.token);
+client.login(process.env.octtoken);
