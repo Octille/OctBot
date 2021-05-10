@@ -1,16 +1,16 @@
 module.exports = {
     name: 'jump',
     async execute(message,args, cmd, client, Discord){
-        if (!message.member.voice.channel) return message.channel.send('You must be in a voice channel to use this command.');
+        if (!message.member.voice.channel) return message.channel.send('**You must be in a voice channel to use this command!**');
         const queue = client.distube.getQueue(message)
 
 
 
         const emptyQueueEmbed = new Discord.MessageEmbed()
         .setTitle("Empty queue")
-        .setColor("RED")
-        .setDescription("oops looks like theres nothing in the queue")
-        .setFooter(`try playing some music then use this command`)
+        .setColor("BLUE")
+        .setDescription(`There is no song currently playing on\n\`${message.guild.name}\``)
+        .setFooter(`Play some music to use this command!`)
         
         const invalidSong = new Discord.MessageEmbed()
         .setTitle(`no song in queue numbered \`${args.join(" ")}\``)

@@ -4,9 +4,14 @@ module.exports = {
         const discord = require("discord.js")
         const embed = new discord.MessageEmbed()
         .setColor("ORANGE")
-        .setTitle('Want free rewards and coins?')
-        .setDescription(`You can get coins and rewards by voting octbot on top.gg which can be done by clicking [here](https://top.gg/bot/741776473613926490/vote)\n**after voting you can check by doing ${settings.prefix}didivote**`)
-        .setFooter('To claim reward please do a command!')
+        .setTitle('Vote for Oct Bot!')
+        .setDescription(`Vote Oct Bot on top.gg for free rewards!
+        **Top.gg**
+        [click here](https://top.gg/bot/741776473613926490/vote)
+
+        Rewards:
+        **₪ 500, 000**`)
+        .setFooter(`After voting you can check by doing ${settings.prefix}didivote.`)
         message.channel.send(embed)
     }
 }

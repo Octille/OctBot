@@ -36,6 +36,7 @@ module.exports = {
                 .setTitle(title)
                 .setDescription(description)
                 .setFooter(`Embed created by ${message.author.username}`)
+                .setColor("RANDOM")
               setTimeout(() => {
                 msg.delete();
                 message.channel.send(embed)

@@ -7,7 +7,7 @@ const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION" 
 const mongoose = require('mongoose');
 require('dotenv').config();
 const DisTube = require('distube')
-client.distube = new DisTube(client, { searchSongs: false, emitNewSongOnly: true });
+client.distube = new DisTube(client, { searchSongs: 0, emitNewSongOnly: true });
 var used1 = false;
 client.on("ready", () => {
 

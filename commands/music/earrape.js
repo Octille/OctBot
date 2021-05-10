@@ -1,9 +1,9 @@
 module.exports = {
     name: 'earrape',
     async execute(message,args, cmd, client, Discord){
-        if (!message.member.voice.channel) return message.channel.send('You must be in a voice channel to use this command.');
+        if (!message.member.voice.channel) return message.channel.send('**You must be in a voice channel to use this command!**');
         const channel = message.channel.id;
-        message.channel.send('are you sure you want to be eareraped').then(async msg => {
+        message.channel.send('Are you sure you want to be eareraped?').then(async msg => {
             try {
                 await msg.react('✔️');
                 await msg.react('❌');

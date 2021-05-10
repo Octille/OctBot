@@ -2,7 +2,7 @@ module.exports = {
     name: `filters`,
     aliases: ["filter"],
     async execute(message,args, cmd, client, Discord){
-        if (!message.member.voice.channel) return message.channel.send('You must be in a voice channel to use this command.');
+        if (!message.member.voice.channel) return message.channel.send('**You must be in a voice channel to use this command!**');
             const queue = client.distube.getQueue(message)
     
          

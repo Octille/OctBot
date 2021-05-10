@@ -3,7 +3,7 @@ module.exports = {
     name: 'queue',
     aliases: ["q"],
     async execute(message,args, cmd, client, Discord){
-        if (!message.member.voice.channel) return message.channel.send('You must be in a voice channel to use this command.');
+        if (!message.member.voice.channel) return message.channel.send('**You must be in a voice channel to use this command!**');
         
         try{
         let mode = client.distube.toggleAutoplay(message);
@@ -50,17 +50,17 @@ module.exports = {
                     if (reaction.emoji.name === pause) {
                         reaction.users.remove(user.id);
                         await client.distube.pause(message);
-                        message.channel.send('song is now unpaused')
+                        message.channel.send('Song is now unpaused!')
                     }
                     if (reaction.emoji.name === unpause) {
                         reaction.users.remove(user.id);
                         await client.distube.resume(message);
-                        message.channel.send('song is now paused')
+                        message.channel.send('Song is now paused!')
                     }
                     if (reaction.emoji.name === shuffle) {
                         reaction.users.remove(user.id);
                         await client.distube.shuffle(message);
-                        message.channel.send('now shuffling queue');
+                        message.channel.send('Now shuffling queue.');
                     }
                     if (reaction.emoji.name === loop) {
                         reaction.users.remove(user.id);
@@ -87,7 +87,15 @@ module.exports = {
             });
         });
     }catch(err){
-        return message.channel.send('No song is currently playing!')
+        const queue = client.distube.getQueue(message);
+        if(!queue){
+            const emptyQueueEmbed = new Discord.MessageEmbed()
+            .setTitle("Empty queue")
+            .setColor("BLUE")
+            .setDescription(`There is no song currently playing on\n\`${message.guild.name}\``)
+            .setFooter(`Play some music to use this command!`)
+            return message.channel.send(emptyQueueEmbed)
+        }
     }
 
     }
