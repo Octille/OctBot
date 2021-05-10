@@ -18,17 +18,14 @@ module.exports = {
         .addField(`Filters: \`${queue.filter || "Off"}\` | AutoPlay: | \`${(mode ? "On" : "Off")}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Volume: \`${queue.volume}%\``, `_ _`)
         .setColor("BLUE")
         message.channel.send(queueembed).then(async msg => {
-            try {
-                await msg.react('⏩');
-                await msg.react('⏯️');
-                await msg.react('⏸️');
-                await msg.react('🔀');
-                await msg.react('🔁');
-                await msg.react('🔉')
-                await msg.react('🔊')
-            } catch (error) {
-                console.error('One of the emojis failed to react.');
-            }
+                msg.react('⏩');
+                msg.react('⏯️');
+                msg.react('⏸️');
+                msg.react('🔀');
+                msg.react('🔁');
+                msg.react('🔉')
+                msg.react('🔊')
+
             const unpause = '⏯️'
             const skip = '⏩'
             const pause = '⏸️'

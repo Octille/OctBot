@@ -6,7 +6,7 @@ module.exports = {
         if (message.content.includes('https://')){
             return client.distube.play(message, args.join(" "))
     }
-    if(!args[0]) return message.channel.send('Please provide a song to play!')
+    if(!args[0]) return message.channel.send('**Please provide a song to play!**')
         message.channel.send(`🔎 searching \`${args.join(" ")}\``).then(msg => {
                     
         client.distube.play(message, args.join(" ")).catch(err => {

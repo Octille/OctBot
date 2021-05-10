@@ -3,7 +3,7 @@ const config = require('./config.json');
 const fs = require("fs");
 const Discord = require('discord.js');
 require('discord-reply');
-const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION" ]});
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION" ], restTimeOffset: 1});
 const mongoose = require('mongoose');
 require('dotenv').config();
 const DisTube = require('distube')

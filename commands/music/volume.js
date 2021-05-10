@@ -25,7 +25,7 @@ module.exports = {
             return message.channel.send('Sorry but the min volume is 0%!')
         }
         client.distube.setVolume(message, args[0]);
-        return message.channel.send(`The volume has been set to \`${args[0]}\!`)
+        return message.channel.send(`The volume has been set to \`${args[0]}\`!`)
 
     }
 }
