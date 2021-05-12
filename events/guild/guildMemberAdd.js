@@ -19,7 +19,7 @@ module.exports = async (client, discord, member) => {
 		const profileData = await profileModel.findOne({ userID: member.id, });
 		if (!profileData) {
 		  const profile = await profileModel.create({
-			userID: member.author.id,
+			userID: member.id,
 			serverID: member.guild.id,
 			coins: 1000,
 			bank: 0,
@@ -78,13 +78,18 @@ module.exports = async (client, discord, member) => {
 	  x = canvas.width / 2 - ctx.measureText(text).width / 2
 	  ctx.fillText(text, x, 100 + pfp.height)
   
-	  const attachment = new MessageAttachment(canvas.toBuffer())
+	  const attachment = new MessageAttachment(canvas.toBuffer(), 'Welcome.png')
 
 	const WelcomeCID = settings.welcomeID
 	if(WelcomeCID < 0) return;
 	try{
 	const channel = await member.guild.channels.cache.get(`${WelcomeCID}`)
-		await channel.send(attachment);
+		const welcomeembed = new Discord.MessageEmbed()
+		.setColor("2F3136")
+		.attachFiles(attachment)
+		.setImage('attachment://Welcome.png');
+		
+		await channel.send(welcomeembed);
 	} catch(err){
 		console.log(err)
 	}

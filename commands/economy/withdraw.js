@@ -13,7 +13,7 @@ module.exports = {
             const all = profileData.bank
             const allbalance = all+coins
             if(all < 1){
-                return message.lineReply('you can\'t withdraw any coins you have 0 in your bank')
+                return message.lineReply('You can\'t withdraw any coins you have 0 in your bank')
             }
             await profileModel.findOneAndUpdate(
                 {
@@ -30,7 +30,7 @@ module.exports = {
         }
         
         if (isNaN(amount)) {
-            return message.lineReply('please provide a valid amount')
+            return message.lineReply('Please provide a valid amount')
              }
              if (amount % 1 != 0 || amount <= 0) return message.lineReply("Withdrawn amount must be a whole number");
              if(amount> profileData.bank){

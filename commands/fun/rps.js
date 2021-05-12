@@ -14,6 +14,7 @@ module.exports = {
             .setColor("#ffffff")
             .setFooter(message.guild.me.displayName, client.user.displayAvatarURL)
             .setDescription("Add a reaction to one of these emojis to play the game!")
+            .setColor("2F3136")
             .setTimestamp();
 
         const m = await message.channel.send(embed);

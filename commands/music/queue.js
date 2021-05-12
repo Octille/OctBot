@@ -3,7 +3,7 @@ module.exports = {
     name: 'queue',
     aliases: ["q"],
     async execute(message,args, cmd, client, Discord){
-        if (!message.member.voice.channel) return message.channel.send('**You must be in a voice channel to use this command!**');
+
         
         try{
         let mode = client.distube.toggleAutoplay(message);

@@ -23,7 +23,7 @@ module.exports = {
           return message.lineReply('You canot send a negative amount')
       }
         if(amount > profileData.coins){
-            return message.lineReply(` you can\'t share to ${mentioned} you only have **₪ ${coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** in your wallet`);
+            return message.lineReply(`You can\'t share to ${mentioned} you only have **₪ ${coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** in your wallet`);
         }
         await profileModel.findOneAndUpdate(
             {
@@ -45,7 +45,7 @@ module.exports = {
               },
             }
           );
-          return message.channel.send(`${user} you have successfully shared **₪ ${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** to ${mentioned}`)
+          return message.channel.send(`${user} You have successfully shared **₪ ${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** to ${mentioned}`)
 
         
 

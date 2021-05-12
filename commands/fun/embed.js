@@ -10,7 +10,7 @@ module.exports = {
         
         const filter = (m) => m.author.id === message.author.id
         const collector = message.channel.createMessageCollector(filter, { max: 2, time: 15000 });
-        message.channel.send('please provid a title').then(() =>{})
+        message.channel.send('Now type your title!').then(() =>{})
         let deleted = 0;
         collector.on('collect', m => {
             
@@ -28,7 +28,8 @@ module.exports = {
                 m.delete();
             }
             const creatingembed = new Discord.MessageEmbed()
-            .setTitle(`creating embed...`);
+            .setTitle(`creating embed...`)
+            .setColor("2F3136");
             message.channel.send(creatingembed).then((msg)=>{
                
                 

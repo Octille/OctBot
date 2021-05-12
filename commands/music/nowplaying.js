@@ -12,6 +12,7 @@ module.exports = {
             .setFooter(`Play some music to use this command!`)
             return message.channel.send(emptyQueueEmbed)
         }
+
         const q = queue.songs.map((song, i) => `[${song.name}](${song.url})
         \n👍\`${song.likes}\` | 👎\`${song.dislikes}\` | 👁️\`${song.views}\` | 🕒\`${song.formattedDuration}\``)
         let queuesong;
@@ -21,7 +22,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
 
         .setTitle('Now Playing')
-        .setDescription(q)
+        .setDescription(q[0])
         .setColor("BLUE")
         .setThumbnail(queuesong.thumbnail)
         .setFooter("Invite Oct Bot using octbot.ml/invite!")

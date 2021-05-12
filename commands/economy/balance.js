@@ -19,7 +19,7 @@ module.exports = {
       const total = coins+bank;
       
         const Balance = new Discord.MessageEmbed()
-        .setColor("RANDOM")
+        .setColor("2F3136")
         .setAuthor(`${user.username}'s balance`, user.displayAvatarURL({ dynamic: true }))
         .setDescription(`Wallet: **₪ ${profileData.coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**\n Bank: **₪ ${profileData.bank.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}** \nTotal net worth: **₪ ${total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}**`)
         
