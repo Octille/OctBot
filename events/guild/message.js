@@ -85,24 +85,33 @@ module.exports = async(Discord, client, message) => {
 });
 
 if (message.content.includes('discord.gg/'||'discordapp.com/invite/')){ 
+  const invitelinkuser = message.member
+  if(!invitelinkuser.hasPermission("MANAGE_MESSAGES")){  
   if(settings.InviteLinks < 1){ //if it contains an invite link
     message.delete()
-    message.channel.send(`${user} Invite links are not allowed on this server`)
+    message.channel.send(`${user} Invite links are not allowed on this server!`)
+  }
   }}
 
   if (message.mentions.has(client.user.id)) {
-    let welcome = settings.WelcomeCID
+    if(!message) return
+
+    let welcome = settings.welcomeID
     let invitelinks = 'off'
     if(settings.InviteLinks == '1'){
       invitelinks = 'on'
     }
-    if(settings.WelcomeCID == null){
+    if(settings.welcomeID == null){
       welcome = 'no welcome message setup'
     }
     const embed = new Discord.MessageEmbed()
-    .setTitle('oh, looks like i was mentioned here are my settings:')
+    .setTitle('You mentioned me:')
     .setDescription(`Prefix:\`${settings.prefix}\`\nWelcomeCID:\`${welcome}\`\nInvite Links:\`${invitelinks}\``)
-    return message.channel.send(embed);
+    .setColor("2F3136")
+    if(!message.content.includes('@everyone') && !message.content.includes('@here')){
+      message.channel.send(embed);
+    } 
+
 };
 
 

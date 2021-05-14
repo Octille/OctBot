@@ -46,7 +46,12 @@ module.exports = {
                   },
                 }
               );
-              return message.channel.send('Invite links are now turned on')
+              const invitelinkson = new Discord.MessageEmbed()
+              .setTitle('Invite links')
+              .setDescription('Invite links are now turned on!')
+              .setFooter('Members on your server are now allowed to send invite links.')
+              .setColor("2F3136")
+              return message.channel.send(invitelinkson)
         }
         if(args[0] == "off"){
             await Guild.findOneAndUpdate(
@@ -59,7 +64,13 @@ module.exports = {
                   },
                 }
               );
-              return message.channel.send('Invite links are now turned off')
+              const invitelinksoff = new Discord.MessageEmbed()
+              .setTitle('Invite links')
+              .setDescription('Invite links are now turned off!')
+              .setFooter('Make sure the users dont have the "manage messages" permission!')
+              .setColor("2F3136")
+
+              return message.channel.send(invitelinksoff)
         }
 
     }

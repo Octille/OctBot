@@ -7,7 +7,10 @@ const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION" 
 const mongoose = require('mongoose');
 require('dotenv').config();
 const DisTube = require('distube')
-client.distube = new DisTube(client, { searchSongs: 0, emitNewSongOnly: true });
+client.distube = new DisTube(client, {
+  searchSongs: 0,
+  emitNewSongOnly: true,
+})
 var used1 = false;
 client.on("ready", () => {
 
@@ -44,8 +47,7 @@ mongoose.connect(process.env.MONGODB_SRV, {
   .then(()=> console.log('Connected to MongoDB!'))
   .catch((error) => console.error(error));
 
-  client.distube
-    .on("playSong", (message, queue, song) => {
+  client.distube.on("playSong", (message, queue, song) => {
       let mode = client.distube.toggleAutoplay(message);
       const playing = new Discord.MessageEmbed()
       .setTitle('🎶 Now Playing')
@@ -56,7 +58,7 @@ mongoose.connect(process.env.MONGODB_SRV, {
       .setColor("BLUE")
       message.channel.send(playing)
     })
-    .on("addSong", (message, queue, song) => {
+client.distube.on("addSong", (message, queue, song) => {
       let mode = client.distube.toggleAutoplay(message);
       const playing = new Discord.MessageEmbed()
       .setTitle('New song added to queue 👍')
@@ -67,10 +69,8 @@ mongoose.connect(process.env.MONGODB_SRV, {
       .setColor("BLUE")
       message.channel.send(playing)
     })
-    .on("playList", (message, queue, playlist, song) => {message.channel.send(
-      `Play \`${playlist.name}\` playlist (${playlist.songs.length} songs).\nRequested by: ${song.user}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\`\n${status(queue)}`
-    )})
-  .on("addList", (message, queue, playlist) => message.channel.send(
+    client.distube.on("playList", (message, queue, playlist, song) => {message.channel.send(`playing playlist`)})
+    client.distube.on("addList", (message, queue, playlist) => message.channel.send(
       `Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
   ))
 
