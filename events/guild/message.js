@@ -129,6 +129,7 @@ try{
         serverID: message.guild.id,
         coins: 1000,
         bank: 0,
+        cooldownenabled: 0,
         Company: {
            miners: 0,
            workers: 0 
