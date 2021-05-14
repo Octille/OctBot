@@ -239,7 +239,10 @@ try{
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+
+
     if (!command) return;
+    if(profileData.cooldownenabled === '1') return command.execute(message, args, cmd, client, Discord, profileData, settings);
 
 
       const COOLDOWN = profileData.commands_cooldowns.find((x) => x.name === command.name)

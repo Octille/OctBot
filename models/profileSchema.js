@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema({
   coins: { type: Number, default: 1000 },
   bank: { type: Number }, 
   topggrewards: { type: String},
+  cooldownenabled: { type: String },
 
   Company: 
     {
