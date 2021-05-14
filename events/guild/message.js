@@ -239,7 +239,7 @@ try{
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
-    if (!command) return message.channel.send('command not found please refer to \`!help\`');
+    if (!command) return;
 
 
       const COOLDOWN = profileData.commands_cooldowns.find((x) => x.name === command.name)
