@@ -30,7 +30,7 @@ module.exports = {
         .replace(/RareFish/, '🐡 Rare Fish')
         .replace(/MythicFish/, '🐠 Mythic Fish')
         .replace(/FishingRod/, '<:FishingRod:816342491111882782> Fishing Rod')
-        .replace(/placeholder: 0/, '')
+       
         
         
 

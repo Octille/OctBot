@@ -12,7 +12,7 @@ module.exports = {
         let resp;
 
         try {
-            resp = math.evaluate(args.join(" "))
+            resp = math.evaluate(args.join(" ").replace(/x/, '*').replace(/X/, '*'))
         } catch (e) {
             return message.channel.send('Please provide a **valid** question')
         }
