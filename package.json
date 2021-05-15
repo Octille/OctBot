@@ -38,6 +38,7 @@
     "got": "^11.8.0",
     "hypixel-api-reborn": "^7.0.3",
     "i18n": "^0.13.2",
+    "mathjs": "^9.3.2",
     "minecraft-server-util": "^3.4.2",
     "mojang-api": "0.0.2",
     "mongoose": "^5.11.17",
