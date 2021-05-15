@@ -45,11 +45,14 @@ module.exports = {
         }
         console.log(profileData)
         if(profileData.cooldownenabled == '1'){
-            enabled_disabled = 'enabled'
+          enabled_disabled = 'disabled'
         }
         if(profileData.cooldownenabled == '0'){
-          enabled_disabled = 'disabled'
+          enabled_disabled = 'enabled'
       }
+      if(!profileData.cooldownenabled){
+        enabled_disabled = 'enabled'
+    }
       return message.channel.send(`${message.mentions.users.first() || message.author} has cooldowns ${enabled_disabled}.`)
     }
 
