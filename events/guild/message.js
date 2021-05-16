@@ -79,8 +79,6 @@ module.exports = async(Discord, client, message) => {
         newGuild.save()
         .then(result => console.log(result))
         .catch(err => console.error(err));
-
-        return message.channel.send('This server was not in our database! We have now added and you should be able to use bot commands.').then(m => m.delete({timeout: 10000}));
     }
 });
 
@@ -147,7 +145,12 @@ try{
         
       });
       profile.save();
-      message.lineReply(`oh no! looks like you wernt in my database but dont worry i have added you now you can use my commands.`)
+        const firstjoinembed = new Discord.MessageEmbed()
+        .setTitle('Welcome')
+        .setDescription('Looks like this is your first time using Oct Bot i have set up some things for you and you are now able to use commands.')
+        .setFooter(`To get started you can do \`${settings.prefix}help\``)
+        .setColor('RANDOM')
+      message.lineReply(firstjoinembed)
     }
   } catch (err) {
 
