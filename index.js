@@ -14,7 +14,6 @@ client.distube = new DisTube(client, {
 
 var used1 = false;
 client.on("ready", () => {
-
   setInterval(() => {
     if (used1) {
       client.user.setActivity("https://octbot.ml/", {
@@ -23,7 +22,7 @@ client.on("ready", () => {
       });
       used1 = false;
     } else {
-      client.user.setActivity(`games on ${client} servers`, {
+      client.user.setActivity(`games on ${client.guilds.cache.size} servers`, {
         type: "PLAYING",
       });
       used1 = true;
