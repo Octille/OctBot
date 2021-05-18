@@ -11,6 +11,7 @@ client.distube = new DisTube(client, {
   searchSongs: 0,
   emitNewSongOnly: true,
 })
+
 var used1 = false;
 client.on("ready", () => {
 
@@ -22,7 +23,7 @@ client.on("ready", () => {
       });
       used1 = false;
     } else {
-      client.user.setActivity(`games on ${client.guilds.cache.size} servers`, {
+      client.user.setActivity(`games on ${client} servers`, {
         type: "PLAYING",
       });
       used1 = true;

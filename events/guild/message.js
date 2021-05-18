@@ -5,7 +5,8 @@ const Guild = require('../../models/guild');
 const counting = require('../../models/Counting');
 const mongoose = require('mongoose');
 const ms = require('ms');
-const discord = require('discord.js')
+const discord = require('discord.js');
+const { re } = require("mathjs");
 
 
 module.exports = async(Discord, client, message) => {

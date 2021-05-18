@@ -8,23 +8,35 @@ module.exports = {
          
             const MessageEmbed = require('discord.js');
             const emptyQueueEmbed = new Discord.MessageEmbed()
-            .setTitle("The Queue appears to be empty.")
+            .setTitle("Empty queue")
             .setColor("BLUE")
-            .setDescription("Try playing a song then utilizing ths command.")
-            .addField('Please choose from the following list.',"`off`\n`3d`\n`bassboost`\n`echo`\n`karaoke`\n`nighcore`\n`vaporwave`\n`flanger`\n`gate`\n`haas`\n`reverse`\n`surround`\n`mcompand`\n`phaser`\n`tremolo`\n`earwax`")
-        
+            .setDescription(`There is no song currently playing on\n\`${message.guild.name}\``)
+            .setFooter(`Play some music to use this command!`)
+            if (!queue) return message.channel.send(emptyQueueEmbed)  
     
             const invalidFilter = new Discord.MessageEmbed()
             .setTitle("That is not a valid filter.")
             .addField('Please choose from the following list.', "`3d`\n`bassboost`\n`echo`\n`karaoke`\n`nighcore`\n`vaporwave`\n`flanger`\n`gate`\n`haas`\n`reverse`\n`surround`\n`mcompand`\n`phaser`\n`tremolo`\n`earwax`")
             //"3d" | "bassboost" | "echo" | "karaoke" | "nightcore" | "vaporwave" | "flanger" | "gate" | "haas" | "reverse" | "surround" | "mcompand" | "phaser" | "tremolo" | "earwax"
+            .setDescription(`Current Queue Filter: \`${queue.filter || "Off"}\``)
+            .setColor("BLUE")
+
+            const noargs = new Discord.MessageEmbed()
+            .setTitle("No filter provided")
+            .addField('Please choose from the following list.', "`3d`\n`bassboost`\n`echo`\n`karaoke`\n`nighcore`\n`vaporwave`\n`flanger`\n`gate`\n`haas`\n`reverse`\n`surround`\n`mcompand`\n`phaser`\n`tremolo`\n`earwax`")
+            //"3d" | "bassboost" | "echo" | "karaoke" | "nightcore" | "vaporwave" | "flanger" | "gate" | "haas" | "reverse" | "surround" | "mcompand" | "phaser" | "tremolo" | "earwax"
+            .setDescription(`Current Queue Filter: \`${queue.filter || "Off"}\``)
             .setColor("BLUE")
 
             
-            if (!queue) return message.channel.send(emptyQueueEmbed)
-            if (args[0] === "off" && queue.filter) client.distube.setFilter(message, queue.filter)
-            else if (Object.keys(client.distube.filters).includes(args[0])) client.distube.setFilter(message, args[0])
-            else if (args[0]) return message.channel.send(invalidFilter)
-            message.channel.send(`Current Queue Filter: \`${queue.filter || "Off"}\``)
+
+            if(!args[0]) return message.channel.send(noargs)
+            try{
+                client.distube.setFilter(message, args[0])
+                message.channel.send(`Queue filter has been set to \`${queue.filter || "Off"}\``)
+            }catch(e){
+                message.channel.send(invalidFilter)
+            }
+
     }
 }
