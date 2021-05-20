@@ -12,7 +12,6 @@ const fetch = require('node-fetch');
 
 module.exports = async(Discord, client, message) => {
 
-
   if(message.channel.id == '820435226227638302'){    
     if(message.content !== `!ticket`){
       if(message.author.id !== client.user.id){
@@ -27,7 +26,7 @@ module.exports = async(Discord, client, message) => {
 
 
   if(message.channel.type === 'dm'){
-    fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}!&uid=${message.author.id}`)
+    fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
     .then(response => response.json())
     .then(data =>{
       try{

@@ -12,6 +12,7 @@ client.distube = new DisTube(client, {
   emitNewSongOnly: true,
 })
 
+
 var used1 = false;
 client.on("ready", () => {
   setInterval(() => {
