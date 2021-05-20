@@ -26,18 +26,20 @@ module.exports = async(Discord, client, message) => {
   if (message.author.bot) return;
 
 
-  if(message.channel.type === 'dm')
-  fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}!&uid=${message.author.id}`)
-  .then(response => response.json())
-  .then(data =>{
-    try{
-      return message.author.send(data.response)   
-    }catch (err) {
-      return message.author.send('Sorry, but I can not answer that.')   
+  if(message.channel.type === 'dm'){
+    fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}!&uid=${message.author.id}`)
+    .then(response => response.json())
+    .then(data =>{
+      try{
+        return message.author.send(data.response)   
+      }catch (err) {
+        return message.author.send('Sorry, but I can not answer that.')   
+  
+      }
+  
+    })
+  }
 
-    }
-
-  })
 
 
   if(message.channel.id == '832060827866759228'){
@@ -77,9 +79,9 @@ module.exports = async(Discord, client, message) => {
   const user = message.author;
 
 
-
+let settings;
   try{
-    const settings = await Guild.findOne({
+     settings = await Guild.findOne({
       guildID: message.guild.id
   }, (err, guild) => {
   
@@ -100,7 +102,6 @@ module.exports = async(Discord, client, message) => {
       }
   });
   }catch (err) {
-  return
   }
  
 
