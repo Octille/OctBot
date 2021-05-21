@@ -15,16 +15,17 @@ module.exports = {
 
         const q = queue.songs.map((song, i) => `[${song.name}](${song.url})
         \n👍\`${song.likes}\` | 👎\`${song.dislikes}\` | 👁️\`${song.views}\` | 🕒\`${song.formattedDuration}\``)
-        let queuesong;
-        queue.songs.map((song, i) => {
-            queuesong = song;
-        })
+
+        const songthumbnail = queue.songs.map((song, i) => 
+            song.thumbnail
+        )
+
         const embed = new Discord.MessageEmbed()
 
         .setTitle('Now Playing')
         .setDescription(q[0])
         .setColor("BLUE")
-        .setThumbnail(queuesong.thumbnail)
+        .setThumbnail(songthumbnail[0])
         .setFooter("Invite Oct Bot using octbot.ml/invite!")
 
         message.channel.send(embed)
