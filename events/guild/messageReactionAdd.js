@@ -4,6 +4,7 @@ const {
 	MessageEmbed,
 	MessageCollector
 } = require('discord.js');
+const message = require('./message');
 
 module.exports = async (Discord, client, reaction, user) => {
 
@@ -61,16 +62,41 @@ async function checkIfClose(client, reaction, user, successMsg, channel) {
 	const filter = m => m.content.toLowerCase() === 'done'
 	const collector = new MessageCollector(channel, filter);
 
+	const filter1 = m => m.content.toLowerCase() === 'cancel'
+	const collector1 = new MessageCollector(channel, filter1);
+
 	collector.on('collect', async msg => {
         const discord = require('discord.js')
         const ticketclosed = new discord.MessageEmbed()
         .setTitle('Ticket Closed!')
         .setDescription(`This channel will be deleted in **5** seconds.`)
+		.setFooter('You can cancel by typing "cancel".')
         .setColor('BLUE');
+
+		const canceleddelete = new discord.MessageEmbed()
+		.setTitle('Canceled!')
+		.setDescription('This ticket has been canceled!')
+		.setFooter('You can delete this channel by typing "done".')
+		.setColor("BLUE");
+
 		channel.send(ticketclosed);
 		await collector.stop();
-		setTimeout(function () {
-			channel.delete();
+
+		let notcanceled;
+		collector1.on('collect', async msg => {
+			channel.send(canceleddelete)
+			notcanceled = 1;
+			checkIfClose(client, reaction, user, successMsg, channel)
+		});
+
+
+		setTimeout(function () {	
+			try{
+				if(!notcanceled){
+					channel.delete()
+				}
+			}catch (err) {
+			}
 		}, 5000);
 	});
 }
