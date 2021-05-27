@@ -12,16 +12,7 @@ const fetch = require('node-fetch');
 
 module.exports = async(Discord, client, message) => {
 
-  if(message.channel.id == '820435226227638302'){    
-    if(message.content !== `!ticket`){
-      if(message.author.id !== client.user.id){
-        return message.delete()
-      }
-    }
-    if(message.author.id !== client.user.id){
-      message.delete()
-    }
-  }
+
   if (message.author.bot) return;
 
 
