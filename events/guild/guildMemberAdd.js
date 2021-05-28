@@ -91,7 +91,7 @@ module.exports = async (client, discord, member) => {
 		
 		await channel.send(welcomeembed);
 	} catch(err){
-		console.log(err)
+		return
 	}
 
 
