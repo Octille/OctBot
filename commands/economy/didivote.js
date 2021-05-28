@@ -3,7 +3,7 @@ module.exports = {
     async execute(message, args, cmd, client){
         const Discord = require('discord.js')
         const Topgg = require('@top-gg/sdk')
-        const api = new Topgg.Api('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MTc3NjQ3MzYxMzkyNjQ5MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjE3NjQ3NTEwfQ.x80_MtabwYpjf5egoAaIxs41pDDm-l0WXoazxdpM2dA')
+        const api = new Topgg.Api('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MTc3NjQ3MzYxMzkyNjQ5MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIyMjE1NTg0fQ.QqMlE5ujjG2YnRzifCCmndA3U59ir-bijm88JyyDp6Y')
         let voted = await api.hasVoted(message.author.id || message.mentions.users.first().id)
         if(!voted){
             const notvoted = new Discord.MessageEmbed()

@@ -199,9 +199,9 @@ try{
       return;
   }
 
-
+try{
   const Topgg = require('@top-gg/sdk')
-  const api = new Topgg.Api('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MTc3NjQ3MzYxMzkyNjQ5MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjE3NjQ3NTEwfQ.x80_MtabwYpjf5egoAaIxs41pDDm-l0WXoazxdpM2dA')
+  const api = new Topgg.Api('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MTc3NjQ3MzYxMzkyNjQ5MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjIyMjE1NTg0fQ.QqMlE5ujjG2YnRzifCCmndA3U59ir-bijm88JyyDp6Y')
   const NotClaimed = 'NotClaimed'
   const Claimed = 'Claimed'
 
@@ -248,6 +248,10 @@ try{
     );
 
   }
+}catch (err) {
+
+}
+
   
     
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -318,11 +322,12 @@ try{
 
       }   
 
-    
+
       if(command) command.execute(message, args, cmd, client, Discord, profileData, settings);
- 
+      console.log('command done') 
   }catch (err) {
     prefix = "!"
+    console.log(err)
   }
    
 }
