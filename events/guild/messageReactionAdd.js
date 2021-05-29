@@ -9,7 +9,6 @@ const discord = require('discord.js')
 const { promptMessage } = require("../../functions");
 module.exports = async (Discord, client, reaction, user) => {
 
-
 	if (reaction.message.partial) await reaction.message.fetch();
 	if (reaction.partial) await reaction.fetch();
 
@@ -25,6 +24,17 @@ module.exports = async (Discord, client, reaction, user) => {
         reaction.users.remove(user.id);
 		if (cooldown.has(user.id)) {
 			reaction.users.remove(user.id);
+			const pleasewait = new discord.MessageEmbed()
+			.setTitle('Ticket')
+			.setDescription('Please wait befor creating a new ticket!')
+			.setFooter('The cooldown for tickets are 30m.')
+			.setColor("RED")
+			user.send(pleasewait)
+			try{
+				
+			}catch(err){
+
+			}
 			return;
 		}
 		data.TicketNumber += 1;
@@ -52,11 +62,15 @@ module.exports = async (Discord, client, reaction, user) => {
 			.setDescription(`This ticket was created by ${user.toString()}.\nPlease say \`done\` when you're finished.`)
 			.setColor('BLUE');
 
-
+			await checkIfClose(client, reaction, user, channel);
+			await cooldown.add(user.id);
+			setTimeout(function () {
+				cooldown.delete(user.id);
+			}, 300000);
+	
 		let successMsg = await channel.send(`${user.toString()} <@&${data.WhitelistedRole}>`, successEmbed).then(async msg =>  {
 
-
-			const emoji = await promptMessage(msg, user, 300000, ["🔒", "⛔"]);
+			const emoji = await promptMessage(msg, user, 30000, ["🔒", "⛔"]);
 
 			if(emoji == "🔒"){
 
@@ -77,11 +91,6 @@ module.exports = async (Discord, client, reaction, user) => {
 				setTimeout(() => channel.delete(), 5000);
 			}
 		});
-		await cooldown.add(user.id);
-		await checkIfClose(client, reaction, user, successMsg, channel);
-		setTimeout(function () {
-			cooldown.delete(user.id);
-		}, 300000);
 
 
 
@@ -104,7 +113,7 @@ const canceleddelete = new discord.MessageEmbed()
 .setColor("BLUE");
 
 
-async function checkIfClose(client, reaction, user, successMsg, channel) {
+async function checkIfClose(client, reaction, user, channel) {
 	const filter = m => m.content.toLowerCase() === 'done'
 	const collector = new MessageCollector(channel, filter);
 
@@ -121,7 +130,7 @@ async function checkIfClose(client, reaction, user, successMsg, channel) {
 		collector1.on('collect', async msg => {
 			channel.send(canceleddelete)
 			notcanceled = 1;
-			checkIfClose(client, reaction, user, successMsg, channel)
+			checkIfClose(client, reaction, user, channel)
 		});
 
 

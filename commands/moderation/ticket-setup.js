@@ -63,6 +63,7 @@ module.exports = {
                         const fourthEmbed = new MessageEmbed()
                             .setTitle('Ticket System Setup')
                             .setDescription('The setup is now finished!')
+                            .setFooter('Each member will have a 30m cooldown after each ticket.')
                             .setColor('BLUE');
                         await msg.channel.send(fourthEmbed);
                         thirdCollector.stop();

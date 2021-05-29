@@ -156,7 +156,9 @@
                       .setTitle(`Role created 👍`)
                       .setDescription(`role name: \`${rolename}\`\nrole colour: \`${rolecolour}\`\nrole type: \`${roletype}\``)
                       .setColor(rolecolour)
-                     return message.channel.send(rolecreated)
+                      
+                      message.channel.send(rolecreated)
+                      collector.stop()
                      
                     }catch(err){
                       return
@@ -176,7 +178,9 @@
                         .setTitle(`Role created 👍`)
                         .setDescription(`role name: \`${rolename}\`\nrole colour: \`${rolecolour}\`\nrole type: \`${roletype}\``)
                         .setColor(rolecolour)
-                       return message.channel.send(rolecreated)
+                        
+                        message.channel.send(rolecreated)
+                        collector.stop()
                       }catch(err){
                         return
                       }

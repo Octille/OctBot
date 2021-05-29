@@ -324,10 +324,8 @@ try{
 
 
       if(command) command.execute(message, args, cmd, client, Discord, profileData, settings);
-      console.log('command done') 
   }catch (err) {
     prefix = "!"
-    console.log(err)
   }
    
 }
