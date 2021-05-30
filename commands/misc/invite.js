@@ -4,14 +4,16 @@ module.exports = {
     description: '',
     async execute(message, args, cmd, client, Discord, profileData, settings) {
         let InviteButton = new MessageButton()
-        .setStyle('url')
+        .setStyle('red')
         .setLabel('Invite Me')
-        .setURL('[click_to_function](https://octbot.ml/invite)')
+        .setID('click_to_function')
+        .setURL('[click_to_function](https://top.gg/bot/741776473613926490/vote)')
 
         let VoteButton = new MessageButton()
-        .setStyle('url')
+        .setStyle('green')
         .setLabel('Vote Me')
-        .setURL('[click_to_function](https://top.gg/bot/741776473613926490/vote)')
+        .setID('Vote_Me')
+        .setURL('[Vote_Me](https://top.gg/bot/741776473613926490/vote)')
 
         const botname = '<@741776473613926490>'
         const invite = new Discord.MessageEmbed()
@@ -22,7 +24,6 @@ module.exports = {
         .addField(`Oct Bot Website:`, `[click me](https://octbot.ml/home/)`)
 
         message.channel.send({
-            buttons: [InviteButton, VoteButton],
             embed: invite
         })
 

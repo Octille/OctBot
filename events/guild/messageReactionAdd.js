@@ -15,11 +15,14 @@ module.exports = async (Discord, client, reaction, user) => {
 		Emoji: reaction.emoji.name,
 	});
 
-	if (reaction.emoji.name === reactionData.Emoji){
-		if(reaction.message.id == reactionData.MessageID){
-			await reaction.message.guild.members.cache.get(user.id).roles.add(reactionData.RoleID);
+	if(reactionData){
+		if (reaction.emoji.name === reactionData.Emoji){
+			if(reaction.message.id == reactionData.MessageID){
+				await reaction.message.guild.members.cache.get(user.id).roles.add(reactionData.RoleID);
+			}
 		}
 	}
+
 	if (reaction.message.partial) await reaction.message.fetch();
 	if (reaction.partial) await reaction.fetch();
 

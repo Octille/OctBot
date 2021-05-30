@@ -5,6 +5,7 @@ const Discord = require('discord.js');
 require('discord-reply');
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION" ], restTimeOffset: 20});
 const mongoose = require('mongoose');
+require('discord-buttons')(client)
 require('dotenv').config();
 const DisTube = require('distube')
 client.distube = new DisTube(client, {
