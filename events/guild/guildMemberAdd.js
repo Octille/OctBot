@@ -14,7 +14,15 @@ const applyText = (canvas, text) => {
 const Discord = require('discord.js');
 const Guild = require('../../models/guild')
 const { MessageAttachment } = require('discord.js')
+const AutoRoleData = require('../../models/AutoRoles');
 module.exports = async (client, discord, member) => {
+	const dataAutoRole = await AutoRoleData.findOne({
+		GuildID: member.guild.id
+	});
+
+	if(dataAutoRole){
+		member.roles.add(dataAutoRole.AutoRoleID)
+	}
 	try {
 		const profileData = await profileModel.findOne({ userID: member.id, });
 		if (!profileData) {

@@ -7,8 +7,19 @@ const {
 const message = require('./message');
 const discord = require('discord.js')
 const { promptMessage } = require("../../functions");
+const ReactionRoleSchema = require('../../models/ReactionRole');
 module.exports = async (Discord, client, reaction, user) => {
+	const reactionData = await ReactionRoleSchema.findOne({
+		GuildID: reaction.message.guild.id,
+		MessageID: reaction.message.id,
+		Emoji: reaction.emoji.name,
+	});
 
+	if (reaction.emoji.name === reactionData.Emoji){
+		if(reaction.message.id == reactionData.MessageID){
+			await reaction.message.guild.members.cache.get(user.id).roles.add(reactionData.RoleID);
+		}
+	}
 	if (reaction.message.partial) await reaction.message.fetch();
 	if (reaction.partial) await reaction.fetch();
 
