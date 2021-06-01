@@ -1,8 +1,8 @@
 const profileModel = require("../../models/profileSchema");
 module.exports = {
-    name: 'rob',
+    //name: 'rob',
     description: '',
-    cooldown: 60,
+    cooldown: 60*10,
     async execute(message, args, cmd, client, Discord) {
         
         
