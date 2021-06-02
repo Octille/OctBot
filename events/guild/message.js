@@ -102,37 +102,19 @@ if (message.content.includes('discord.gg/'||'discordapp.com/invite/')){
   }
   }}
 
-  if (message.mentions.has(client.user.id)) {
-    if(!message) return
 
-    let welcome = settings.welcomeID
-    let invitelinks = 'off'
-    if(settings.InviteLinks == '1'){
-      invitelinks = 'on'
-    }
-    if(settings.welcomeID == null){
-      welcome = 'no welcome message setup'
-    }
-    const embed = new Discord.MessageEmbed()
-    .setTitle('You mentioned me:')
-    .setDescription(`Prefix:\`${settings.prefix}\`\nWelcomeCID:\`${welcome}\`\nInvite Links:\`${invitelinks}\``)
-    .setColor("2F3136")
-    if(!message.content.includes('@everyone') && !message.content.includes('@here')){
-      message.channel.send(embed);
-    } 
-
-};
 
 
 try{
     let prefix = settings.prefix;
    
-
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    if(message.author.bot) return;
+ 
     let profileData;
   try {
     profileData = await profileModel.findOne({ userID: message.author.id });
     if (!profileData) {
+      if(!message.content.startsWith(prefix)) return;
       let profile = await profileModel.create({
         userID: message.author.id,
         serverID: message.guild.id,
@@ -161,11 +143,25 @@ try{
         .setDescription('Looks like this is your first time using Oct Bot i have set up some things for you and you are now able to use commands.')
         .setFooter(`To get started you can do \`${settings.prefix}help\``)
         .setColor('RANDOM')
-      message.lineReply(firstjoinembed)
+      return message.lineReply(firstjoinembed)
     }
   } catch (err) {
 
   }
+  if(!message) return
+    
+  let welcome = settings.welcomeID
+  let invitelinks = 'off'
+  if(settings.InviteLinks == '1'){
+    invitelinks = 'on'
+  }
+  if(settings.welcomeID == null){
+    welcome = 'no welcome message setup'
+  }
+  const embed = new Discord.MessageEmbed()
+  .setTitle('You mentioned me:')
+  .setDescription(`Prefix:\`${settings.prefix}\`\nWelcomeCID:\`${welcome}\`\nInvite Links:\`${invitelinks}\``)
+  .setColor("2F3136")
 
   if(profileData.coins < 0){
     message.channel.send('looks like you lost all your coins and has a stroke, you paid the hostpital half your bank')
@@ -253,14 +249,16 @@ try{
 }
 
   
-    
-    const args = message.content.slice(prefix.length).split(/ +/);
+    const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    const prefixRegex = new RegExp(`^(<@!${client.user.id}> |${escapeRegex(prefix)})\\s*`);
+    if(prefixRegex.test(message.content)){
+      const [, matchedPrefix ] = message.content.match(prefixRegex)
+    const args = message.content.slice(matchedPrefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
-
-
-    if (!command) return;
+    if(!command) return
     if(profileData.cooldownenabled === '1') return command.execute(message, args, cmd, client, Discord, profileData, settings);
 
 
@@ -324,7 +322,9 @@ try{
 
 
       if(command) command.execute(message, args, cmd, client, Discord, profileData, settings);
+    }
   }catch (err) {
+    console.error(err)
     prefix = "!"
   }
    

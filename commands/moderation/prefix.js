@@ -30,14 +30,23 @@ module.exports = {
         });
 
         if (args.length < 1) {
-            return message.channel.send(`You must specify a prefix to set for this server! Your current server prefix is \`${settings.prefix}\``).then(m => m.delete({timeout: 10000}));
+            const noprefixembed = new Discord.MessageEmbed()
+            .setTitle("Prefix")
+            .setDescription(`You must specify a prefix to set for this server!\nYour current server prefix is \`${settings.prefix}\``)
+            .setColor("BLUE")
+            return message.channel.send(noprefixembed)
         };
 
         await settings.updateOne({
             prefix: args[0]
         });
+        const newPrefix = new Discord.MessageEmbed()
+        .setTitle('Prefix')
+        .setDescription(`Your server prefix has been updated to \`${args[0]}\``)
+        .setFooter('You can also mention me if you forgot your prefix.')
+        .setColor("BLUE")
 
-        return message.channel.send(`Your server prefix has been updated to \`${args[0]}\``);
+        return message.channel.send(newPrefix)
     }
 }
 
