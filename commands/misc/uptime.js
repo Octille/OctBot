@@ -9,7 +9,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle('Uptime')
         .setDescription(`I have been online for **${ms(client.uptime, { long: true }) }**`)
-        .setFooter(`Vote for oct bot on top.gg befor I go offline!\n${client.user.username}`)
+        .setFooter(`Vote for oct bot on top.gg before I go offline!\n${client.user.username}`)
         .setTimestamp()
         .setColor("BLUE")
         message.channel.send(embed);

@@ -41,7 +41,7 @@ if(title){
     .replace(/[{()}]/g, '')
     .replace(/.js/g, '')
     .replace(/,/g, ', ')}`)
-    .setFooter(`remeber to use \`${settings.prefix}\` befor every command`)
+    .setFooter(`remeber to use \`${settings.prefix}\` before every command`)
     return message.channel.send(Miscembed)
     });
     }
