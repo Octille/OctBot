@@ -18,7 +18,7 @@ module.exports = {
             const voted = new Discord.MessageEmbed()
             .setColor("GREEN")
             .setTitle('You have voted!')
-            .setDescription('once you have voted you should of gotten a message from me with the rewards ')
+            .setDescription('once you have voted you should have gotten a message from me with the rewards ')
             .setFooter("you can also check votes by joining our server")
             return message.channel.send(voted)
         }

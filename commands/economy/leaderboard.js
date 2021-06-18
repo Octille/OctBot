@@ -20,6 +20,7 @@ module.exports = {
                          
              try{
                 memberid[Data.userID] = (memberid[Data.userID] || 0) + Data.coins
+                console.log(memberid)
              }catch{
 
              }

@@ -16,18 +16,6 @@ module.exports = async(Discord, client, message) => {
   if (message.author.bot) return;
 
 
-  if(message.channel.type === 'dm'){
-    try{
-      fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
-      .then(response => response.json())
-      .then(data =>{
-          return message.author.send(data.response)     
-      })
-    }catch (err) {
-        return message.author.send('Sorry, but I can not answer that.')   
-      }
-  }
-
 
 
   if(message.channel.id == '832060827866759228'){
@@ -258,6 +246,7 @@ try{
     const cmd = args.shift().toLowerCase();
 
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+
     if(!command) return
     if(profileData.cooldownenabled === '1') return command.execute(message, args, cmd, client, Discord, profileData, settings);
 

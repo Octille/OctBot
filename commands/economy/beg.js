@@ -10,8 +10,6 @@ module.exports = {
     
 
     var d = Math.random();
-    if (d < 0.7)
-    {
       const randomNumber = Math.floor(Math.random() * 500) + 1;
       const response = await profileModel.findOneAndUpdate(
         {
@@ -30,47 +28,6 @@ module.exports = {
       const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
       return message.lineReply(randomMessage);
-    }
-    
-        
-    else if (d < 0.3)
-        {
-         
-            const loss = Math.floor(Math.random() * 500) + 1;
-            const response = await profileModel.findOneAndUpdate(
-              {
-                userID: message.author.id,
-              },
-              {
-                $inc: {
-                  coins: -loss,
-                  
-                },
-                $set: {
-                  "cooldowns.Beg":  new Date(),
-                }
-              }
-            );
-            const current_time = Date.now();
-            const time_stamps = cooldowns.get(command.name);
-            const cooldown_amount = (command.cooldown) * 1000;
-        
-            if(time_stamps.has(message.author.id)){
-                const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
-        
-                if(current_time < expiration_time){
-                    const time_left = (expiration_time - current_time) / 1000 ;
-                }
-              }
-            
-            
-            const fail = [`You lost **₪ ${loss}** after crying like a whimp.`, `You decided to reword your sentence and it came out like, "take my money plz". You've lost **₪ ${loss}**.`, `You begged to hard and lost **₪ ${loss}**.`, `**₪ ${loss}** fell out of your pocket as you ran up to Pokimane to give it to her. She then called the police on you and you were arrested. What a noob, you only got 1 star before getting caught. You were then cancelled on twitter and became homeless.`, `You paid too much attention in class and lost **₪ ${loss}**!`, `You bought too much food to eat. The bill was **₪ ${loss}**.`, `**₪ ${loss}** was lost while inputting your card info online into wIsH.`, `The developer took **₪ ${loss}** because of your horribe behaviour today.`, `You paid **₪ ${loss}** after donating to a streamer.`, `Pokimane asked for **₪ ${loss}** and you paid up. What a simp.`, `You joined the "Who Wants To Be A Millionaire" show and got the first question wrong. After taxes, you lost **₪ ${loss}**`, `Your alarm clock exploded except this time you had to buy a new one that cost **₪ ${loss}**.`]
-            const failrandomMessage = fail[Math.floor(Math.random() * fail.length)];
-            message.lineReply(failrandomMessage)
-    
-        }
-    
-    
 
   },
 };

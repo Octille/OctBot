@@ -37,7 +37,7 @@ try{
         embed.setDescription(`[${data.username}](https://plancke.io/hypixel/player/stats/${args[0]})`);
         embed.setThumbnail(`https://cravatar.eu/helmhead/${args[0]}.png`)
         embed.setColor(data.online ? colors['Green'] : colors['Red']);
-        embed.setImage('');
+        embed.setImage(`http://gen.plancke.io/exp/${data.username}.png`);
         embed.addFields({
             name: `**Online status:**`,
             value: `${data.online ? 'Online' : 'Offline'}`,
@@ -74,7 +74,7 @@ try{
         embed.setDescription(`[${data.username}](https://plancke.io/hypixel/player/stats/${args[0]})`);
         embed.setThumbnail(`https://cravatar.eu/helmhead/${args[0]}.png`)
         embed.setColor(data.online ? colors['Green'] : colors['Red']);
-        embed.setImage('');
+        embed.setImage(`http://gen.plancke.io/exp/${data.username}.png`);
         embed.addFields({
             name: `**Online status:**`,
             value: `${data.online ? 'Online' : 'Offline'}`,
