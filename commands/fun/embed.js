@@ -9,7 +9,7 @@ module.exports = {
         let description = 0
         
         const filter = (m) => m.author.id === message.author.id
-        const collector = message.channel.createMessageCollector(filter, { max: 2, time: 15000 });
+        const collector = message.channel.createMessageCollector(filter, { max: 2, time: 300000 });
         message.channel.send('Now type your title!').then(() =>{})
         let deleted = 0;
         collector.on('collect', m => {
