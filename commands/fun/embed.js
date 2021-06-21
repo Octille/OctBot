@@ -54,7 +54,10 @@ module.exports = {
             
         });
         
-        collector.on('end', collected => {       
+        collector.on('end', collected => {
+            if (description == '0'){
+                message.channel.send('Time has ran out, please try again!')
+            }       
         });
      
           
