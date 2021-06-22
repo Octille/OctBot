@@ -76,7 +76,11 @@ module.exports = {
             await TicketData.findOneAndRemove({
                 GuildID: message.guild.id
             });
-            message.channel.send(`**Successfuly Reset the Ticket System on your Server!**\npls use this command again to re-setup!`);
+            const deleteembed = new Discord.MessageEmbed()
+            .setTitle("Ticket")
+            .setDescription(`**Reset the Ticket System on your Server!**\nplease use this command again to re-setup!`)
+            .setColor("BLUE")
+            message.channel.send(deleteembed);
         }
 }
 }

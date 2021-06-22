@@ -10,7 +10,7 @@ module.exports = {
         if(!message.guild.me.hasPermission("ADMINISTRATOR")){
         return message.channel.send('I need Admin permissions to give roles')
         }
-        const data = await AutoRoleData.findOne({ GuildID: message.guild.id });
+        let data = await AutoRoleData.findOne({ GuildID: message.guild.id });
         if(!data){
         const firstFilter = m => m.author.id === message.author.id;
         const firstCollector = new MessageCollector(message.channel, firstFilter, { max: 1 });
@@ -38,11 +38,14 @@ module.exports = {
             await createAutoRole(savedRole, message)
             
         })
-    } else {
-        await data.findOneAndRemove({
-            GuildID: message.guild.id
-        });
-        message.channel.send(`**Successfuly Reset the auto role on your Server!**\nplease use this command again to re-setup!`);
+    } 
+    if(data){
+        await data.delete();
+        const deleteembed = new Discord.MessageEmbed()
+        .setTitle("Auto Role")
+        .setDescription(`**Successfuly Reset the auto role on your Server!**\nplease use this command again to re-setup!`)
+        .setColor("BLUE")
+        message.channel.send(deleteembed);
     }
 
     }
