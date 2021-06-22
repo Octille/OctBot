@@ -39,7 +39,7 @@ module.exports = {
             
         })
     } else {
-        await data.findOneAndRemove({
+        await data.findOneAndDelete()({
             GuildID: message.guild.id
         });
         message.channel.send(`**Successfuly Reset the auto role on your Server!**\nplease use this command again to re-setup!`);
