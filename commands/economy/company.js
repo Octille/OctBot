@@ -32,7 +32,7 @@ module.exports = {
       } else if (workers_owned < 10){
         workerscost = 500000;
       } else if (workers_owned > 10){
-        workerscost = workers_owned * 50000 + 1000000
+        workerscost = workers_owned * 65000 + 1000000
       }
       const workerhourly = totalworkers * 15000
 
