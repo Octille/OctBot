@@ -129,7 +129,7 @@ module.exports = {
       .addField(`⛏️ Miners:`, `${totalminers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
       .addField(`💵 Hourly avg`, `₪ ${workerhourly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
       .addField(`👷 Workers`, `${totalworkers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
-      .addField(`🚀 Boosters`, `%0`, true)
+      .addField(`🚀 Boosters`, `0%`, true)
       .setFooter('You can buy something from the shop by doing !company shop');
 
       return message.channel.send(company)
@@ -142,7 +142,7 @@ module.exports = {
     .addField(`⛏️ Miners:`, `${totalminers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
     .addField(`💵 Hourly avg`, `₪ ${workerhourly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
     .addField(`👷 Workers`, `${totalworkers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
-    .addField(`🚀 Boosters`, `%0`, true)
+    .addField(`🚀 Boosters`, `0%`, true)
     .setFooter('You can buy something from the shop by doing !company shop');
 
     return message.channel.send(company)
