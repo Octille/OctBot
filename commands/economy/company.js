@@ -3,7 +3,7 @@ module.exports = {
     name: 'company',
     description: '',
     aliases: ["comp", "c"],
-    async execute(message, args, cmd, client, Discord, profileData) {
+    async execute(message, args, cmd, client, Discord, profileData, settings) {
       
       const user = message.mentions.users.first() || message.author;
       let menstionedData;
@@ -31,8 +31,8 @@ module.exports = {
         workerscost = 250000;
       } else if (workers_owned < 10){
         workerscost = 500000;
-      } else {
-        workerscost = 1000000;
+      } else if (workers_owned > 10){
+        workerscost = workers_owned * 50000 + 1000000
       }
       const workerhourly = totalworkers * 15000
 
@@ -40,9 +40,8 @@ module.exports = {
         const shop1 = new Discord.MessageEmbed()
         .setColor("#6b32a8")
         .setTitle('Company Shop')
-        .addField(`⛏️ Miners — ₪ ${minercost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, `With miners you can make money by doing !mine`)
-        .addField(`👷 Workers — ₪ ${workerscost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, `Workings increase your hourly pay (!company hourly)`)
-        .addField(`🚀 Boosters — ₪ ${workerscost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, `this will increase your miner and hourly money`)
+        .addField(`⛏️ Miners — ₪ ${minercost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, `With miners you can make money by doing ${settings.prefx}mine`)
+        .addField(`👷 Workers — ₪ ${workerscost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, `Workings increase your hourly pay (${settings.prefx}hourly)`)
         .addField(`coming soon . . . `, `coming soon`)
         .addField(`coming soon . . . `, `coming soon`)
         .setFooter('Some prices might increase due to the amount of items you have\n!company buy (item)')
@@ -94,8 +93,8 @@ module.exports = {
           
         const amountedit = args[2]
         let amount = 1;
-        if(amountedit){
-          amount = args[2];
+        if(amountedit > 1){
+          return message.channel.send(`You can only buy one worker at a time!`)
         }
         const workerscosts = workerscost * amount
         if(isNaN(amount)){
@@ -128,9 +127,8 @@ module.exports = {
           
       .setAuthor(`${user.username}'s Company`, user.displayAvatarURL({ dynamic: true }))
       .addField(`⛏️ Miners:`, `${totalminers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
-      .addField(`💵 Hourly`, `₪ ${workerhourly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
+      .addField(`💵 Hourly avg`, `₪ ${workerhourly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
       .addField(`👷 Workers`, `${totalworkers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
-      .addField(`⚡ Bills`, `₪ 0`, true)
       .addField(`🚀 Boosters`, `%0`, true)
       .setFooter('You can buy something from the shop by doing !company shop');
 
@@ -142,9 +140,8 @@ module.exports = {
         
     .setAuthor(`${user.username}'s Company`, user.displayAvatarURL({ dynamic: true }))
     .addField(`⛏️ Miners:`, `${totalminers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
-    .addField(`💵 Hourly`, `₪ ${workerhourly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
+    .addField(`💵 Hourly avg`, `₪ ${workerhourly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
     .addField(`👷 Workers`, `${totalworkers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, true)
-    .addField(`⚡ Bills`, `₪ 0`, true)
     .addField(`🚀 Boosters`, `%0`, true)
     .setFooter('You can buy something from the shop by doing !company shop');
 
