@@ -268,6 +268,7 @@ try{
    
         }
       )
+      
       }else{
         const command_cooldown = command.cooldown * 1000
         if(command_cooldown - (Date.now() - COOLDOWN.time) > 0){
