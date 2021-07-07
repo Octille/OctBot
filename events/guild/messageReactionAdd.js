@@ -40,7 +40,7 @@ module.exports = async (Discord, client, reaction, user) => {
 			reaction.users.remove(user.id);
 			const pleasewait = new discord.MessageEmbed()
 			.setTitle('Ticket')
-			.setDescription('Please wait befor creating a new ticket!')
+			.setDescription('Please wait before creating a new ticket!')
 			.setFooter('The cooldown for tickets are 30m.')
 			.setColor("RED")
 			user.send(pleasewait)
