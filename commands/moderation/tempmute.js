@@ -1,4 +1,5 @@
 const ms = require('ms');
+const setTimeouts = require('safe-timers').setTimeout;
 module.exports = {
     name: 'tempmute',
     description: 'tempmutes a member',
@@ -66,7 +67,7 @@ module.exports = {
             message.channel.send(muted)
             member.send(mutedmember)
 
-            setTimeout( function () {
+            setTimeouts( function () {
                 member.roles.remove(role.id);
                 message.channel.send(unmuted)
                 try{
