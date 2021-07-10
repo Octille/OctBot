@@ -34,6 +34,19 @@ const rolegiven = new Discord.MessageEmbed()
 .setColor("GREEN")
 
 
+
+if(message.mentions.roles){
+    member.roles.remove(message.mentions.roles);
+    const roleNames = message.mentions.roles.map(r => r.name).toString()
+    let roleMention = message.guild.roles.cache.find(r => r.name === roleNames);
+    rolegiven.setDescription(`${member} has been given the role ${roleMention}`)
+    return message.channel.send(rolegiven)
+} 
+if(role){
+    member.roles.remove(role);
+    rolegiven.setDescription(`${member} has been given the role ${role}`)
+    return message.channel.send(rolegiven)
+}
 if(role === undefined || !role){
     const noroles = new Discord.MessageEmbed()
     .setTitle('Role not found!')
@@ -41,17 +54,7 @@ if(role === undefined || !role){
     .setColor("RED")
     return message.channel.send(noroles)
 }
-if(role){
-    member.roles.remove(role);
-    rolegiven.setDescription(`${member} has been given the role ${role}`)
-}else if(message.mentions.roles){
-    member.roles.remove(message.mentions.roles);
-    const roleNames = message.mentions.roles.map(r => r.name).toString()
-    let roleMention = message.guild.roles.cache.find(r => r.name === roleNames);
-    rolegiven.setDescription(`${member} has been given the role ${roleMention}`)
-} 
 
-message.channel.send(rolegiven)
 
 }catch(err){
     const error = new Discord.MessageEmbed()
