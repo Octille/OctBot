@@ -6,10 +6,11 @@ module.exports = {
     category: "moderation",
     description: "bans the member",
     async execute(message,args, cmd, client, Discord){
+        const toBan = message.mentions.members.first();
         if (!args[0]) {
             return message.reply("Please provide a person to ban.")
          }
-         if(!message.mentions){
+         if(!toBan){
              return message.reply("Please mention a member to ban!")
          }
          message.channel.send(`type a reason to ban ${message.mentions.users.first()} below`)
@@ -34,7 +35,7 @@ module.exports = {
                 
         }
 
-        const toBan = message.mentions.members.first();
+        
 
         // No member found
         if (!toBan) {
