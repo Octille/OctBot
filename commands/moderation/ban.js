@@ -9,6 +9,9 @@ module.exports = {
         if (!args[0]) {
             return message.reply("Please provide a person to ban.")
          }
+         if(!message.mentions){
+             return message.reply("Please mention a member to ban!")
+         }
          message.channel.send(`type a reason to ban ${message.mentions.users.first()} below`)
          const filter = (m) => m.author.id === message.author.id
          const collector = message.channel.createMessageCollector(filter, { max: 1, time: 15000 });
