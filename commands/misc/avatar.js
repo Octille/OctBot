@@ -7,11 +7,13 @@ module.exports = {
   aliases: ['av'],
   async execute(message,args, cmd, client, Discord){
     const user = message.mentions.users.first() || message.author;
+    const avatarURL = user.displayAvatarURL({ dynamic: true })
+    
 
     const embed = new Discord.MessageEmbed()
-      .setTitle("Avatar Request : " + user.username)
-      .setImage(user.displayAvatarURL({ dynamic: true }))
-      .setColor("GREEN")
+      .setAuthor(`${user.username}'s avatar`, user.displayAvatarURL({ dynamic: true }))
+      .setImage(`${avatarURL}?size=256`)
+      .setColor("BLUE")
 
     message.channel.send(embed);
   },
