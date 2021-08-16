@@ -12,31 +12,36 @@ module.exports = {
             
       const totalminers = menstionedData.Company.miners
       const miners_owned = profileData.Company.miners;
-      let minercost;
+      let minercost = 500000;
       if (miners_owned < 3) {
         minercost = 500000;
       } else if (miners_owned < 7){
         minercost = 1000000;
       } else if (miners_owned < 10){
         minercost = 1250000;
+      }else if (miners_owned == 10){
+        minercost = miners_owned * 75000 + 1000000
       } else if (miners_owned > 10){
         minercost = miners_owned * 75000 + 1000000
       }
       const totalworkers = menstionedData.Company.workers
       const workers_owned = profileData.Company.workers;
-      let workerscost;
+      let workerscost = 150000;
       if (workers_owned < 3) {
         workerscost = 150000;
       } else if (workers_owned < 7){
         workerscost = 250000;
       } else if (workers_owned < 10){
         workerscost = 500000;
+      } else if (workers_owned == 10){
+        workerscost = workers_owned * 65000 + 1000000
       } else if (workers_owned > 10){
         workerscost = workers_owned * 65000 + 1000000
       }
       const workerhourly = totalworkers * 15000
 
       if(args[0] == "shop"){
+        console.log(`${minercost}, ${workerscost} `)
         const shop1 = new Discord.MessageEmbed()
         .setColor("#6b32a8")
         .setTitle('Company Shop')
