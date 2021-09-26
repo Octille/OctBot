@@ -2,8 +2,7 @@ const { json } = require('mathjs');
 const fetch = require('node-fetch');
 
 module.exports = {
-    name: 'youtube',
-    aliases: ['yt'],
+    name: 'poker',
     async execute(message, args, cmd, client, Discord){
 
     const { channel } = message.member.voice
@@ -13,7 +12,7 @@ module.exports = {
         body: JSON.stringify({
             max_age: 86400,
             max_uses: 0,
-            target_application_id: "755600276941176913",
+            target_application_id: "755827207812677713",
             target_type: 2,
             temporary: false,
             validate: null
@@ -26,9 +25,9 @@ module.exports = {
     .then(invite =>{
         if(!invite.code) return message.channel.send('Could not create a youtube together link!')
         const ytembed = new Discord.MessageEmbed()
-        .setColor("RED")
-        .setTitle('Youtube Together')
-        .setDescription(`[Click here](https://discord.com/invite/${invite.code}) to join a Youtube Together Activity`)
+        .setColor("BLUE")
+        .setTitle('Poker')
+        .setDescription(`[Click here](https://discord.com/invite/${invite.code}) to play poker.`)
         message.channel.send(ytembed)
     })
     }
