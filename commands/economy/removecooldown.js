@@ -4,7 +4,7 @@ module.exports = {
     description: 'rcd',
     aliases: ['rd'],
     async execute(message, args, cmd, client, Discord) {
-        if (message.member.id != "460509056487129090") return message.channel.send(`Sorry only **Gurkirat** can run this command 😔`);
+        if (message.member.id != "460509056487129090") return message.channel.send(`Sorry only **Oct** can run this command 😔`);
         const user = message.mentions.users.first().id || message.author.id;
         const cooldown = args[1]
         

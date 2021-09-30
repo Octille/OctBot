@@ -9,6 +9,7 @@ const profileSchema = new mongoose.Schema({
   bank: { type: Number }, 
   topggrewards: { type: String},
   cooldownenabled: { type: String },
+  banned: { type: String },
 
   Company: 
     {
