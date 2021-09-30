@@ -138,15 +138,7 @@ try{
 
   }
   if(!message) return
-  const findBannedUser = await profileModel.findOne({userID: message.author.id})
-  if(findBannedUser.banned > 0){
-    const bannedUserEmbed = new Discord.MessageEmbed()
-    .setColor("RED")
-    .setTitle("Banned!")
-    .setDescription("Oh no!\nLooks like you have been banned from using oct bot. If you feel like you shouldn't be banned please submit a ticket at our [support server](https://discord.gg/dcPNxxUSuF)\nThank you.")
-    return message.channel.send(bannedUserEmbed)
-  }
-    
+
   let welcome = settings.welcomeID
   let invitelinks = 'off'
   if(settings.InviteLinks == '1'){
@@ -246,10 +238,13 @@ try{
 }
 
   
+
+  
     const escapeRegex = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
     const prefixRegex = new RegExp(`^(<@!${client.user.id}> |${escapeRegex(prefix)})\\s*`);
     if(prefixRegex.test(message.content)){
+
       const [, matchedPrefix ] = message.content.match(prefixRegex)
     const args = message.content.slice(matchedPrefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
@@ -257,6 +252,14 @@ try{
     const command = client.commands.get(cmd) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
 
     if(!command) return
+    const findBannedUser = await profileModel.findOne({userID: message.author.id})
+    if(findBannedUser.banned > 0){
+      const bannedUserEmbed = new Discord.MessageEmbed()
+      .setColor("RED")
+      .setTitle("Banned!")
+      .setDescription("Oh no!\nLooks like you have been banned from using oct bot. If you feel like you shouldn't be banned please submit a ticket at our [support server](https://discord.gg/dcPNxxUSuF)\nThank you.")
+      return message.channel.send(bannedUserEmbed)
+    }
     if(profileData.cooldownenabled === '1') return command.execute(message, args, cmd, client, Discord, profileData, settings);
 
 
